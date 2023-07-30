@@ -3,7 +3,7 @@
 ## サービス概要
 * オススメのストレス解消法（Stress Relief Method：SRM）を共有でき、共有されている方法や自分で見つけた方法を実際に試して、その結果を記録できるサービスです。
 
-##　想定されるユーザー層
+## 想定されるユーザー層
 * 効果的なストレス解消法を探している人
 * 他の人がどのようにストレスを解消しているのかを知りたいと思っている人
 * 自身のストレス解消法を共有したいと思っている人
@@ -41,3 +41,6 @@
 
 ## 画面遷移図
 https://www.figma.com/file/DB6esyvYiVov5G5o497PtD/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=n5Y5LdFE9Mygvyzm-1
+
+## ER図
+![](RecordSRM_ER.png)
