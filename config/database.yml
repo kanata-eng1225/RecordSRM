@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: RecordSRM_production
-  username: RecordSRM
-  password: <%= ENV["RECORDSRM_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
