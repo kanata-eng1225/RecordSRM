@@ -1,19 +1,7 @@
-<div class="relative">
-  <div class="sticky top-0 flex h-screen items-center">
-    <div class="absolute top-10 right-0 m-auto flex w-2/4 flex-col items-center justify-start gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-2xl font-bold mb-20">オススメのストレス解消法の共有と、その効果を記録しませんか？</h2>
-      <p class="font-sans text-lg font-semibold">新しい日常の一歩を</p>
-      <p class="font-sans text-lg font-semibold mb-5">ここから</p>
-      <% if user_signed_in? %>
-        <div class="my-10">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: "font-semibold py-2 px-4 rounded text-white bg-sky-600 hover:bg-sky-800 cursor-pointer" %>
-        </div>
-      <% else %>
-        <div class="my-10 space-x-4">
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary font-semibold py-2 px-4 rounded hover:bg-gray-100" %>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-accent font-semibold py-2 px-4 rounded hover:bg-gray-100" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+<div class="rating">
+  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
 </div>
