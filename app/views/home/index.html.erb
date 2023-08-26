@@ -1,12 +1,14 @@
 <div class="relative">
   <div class="sticky top-0 flex h-screen items-center">
+    <img src="<%= image_url('stress_top1.jpg') %>" class="h-full w-full object-cover" />
     <div class="absolute top-10 right-0 m-auto flex w-2/4 flex-col items-center justify-start gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-2xl font-bold mb-20">オススメのストレス解消法の共有と、その効果を記録しませんか？</h2>
-      <p class="font-sans text-lg font-semibold">新しい日常の一歩を</p>
-      <p class="font-sans text-lg font-semibold mb-5">ここから</p>
+      <h2 class="text-3xl font-bold mt-4 mb-4">オススメのストレス解消法の共有と</h2>
+      <h2 class="text-3xl font-bold mb-20">その効果を記録しませんか？</h2>
+      <p class="font-sans text-xl font-semibold mb-4">新しい日常の一歩を</p>
+      <p class="font-sans text-xl font-semibold mb-5">ここから</p>
       <% if user_signed_in? %>
         <div class="my-10">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: "font-semibold py-2 px-4 rounded text-white bg-sky-600 hover:bg-sky-800 cursor-pointer" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-secondary font-semibold py-2 px-4 rounded hover:bg-gray-100" %>
         </div>
       <% else %>
         <div class="my-10 space-x-4">
@@ -14,6 +16,30 @@
           <%= link_to "新規登録", new_user_registration_path, class: "btn btn-accent font-semibold py-2 px-4 rounded hover:bg-gray-100" %>
         </div>
       <% end %>
+    </div>
+  </div>
+
+  <div class="sticky top-0 flex h-screen items-center">
+    <img src="<%= image_url('stress_top2.jpg') %>" class="h-full w-full object-cover" />
+    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
+      <h2 class="text-2xl font-bold text-white">RecordSRMとは？</h2>
+      <p class="font-sans text-lg text-white">オススメのストレス解消法（Stress Relief Method:SRM）を共有でき、共有されている方法や自分で見つけた方法を実際に試して、その結果を記録できるサービスです。</p>
+    </div>
+  </div>
+
+  <div class="sticky top-0 flex h-screen items-center">
+    <img src="<%= image_url('stress_top3.jpg') %>" class="h-full w-full object-cover" />
+    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
+      <h2 class="text-2xl font-bold text-white">サービスコンセプト</h2>
+      <p class="font-sans text-lg text-white">現代社会では多くの人がストレスを抱え、その解消法は人によって異なります。自分に適したストレス解消法を見つけること、そしてその効果を数値で確認するのは容易ではありません。RecordSRMでは、ユーザー間でオススメのストレス解消法を共有することで、新たな解消法を見つけるきっかけを提供します。さらに、試したストレス解消法の結果を記録し、その効果を数値化・視覚化することで、より効果的なストレス対策の発見と実行をサポートします。</p>
+    </div>
+  </div>
+
+  <div class="sticky top-0 flex h-screen items-center">
+    <img src="<%= image_url('stress_top4.jpg') %>" class="h-full w-full object-cover" />
+    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
+      <h2 class="text-2xl font-bold text-white">使い方</h2>
+      <p class="font-sans text-lg text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
     </div>
   </div>
 </div>
