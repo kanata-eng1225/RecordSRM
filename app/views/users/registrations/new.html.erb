@@ -1,34 +1,37 @@
-<h2>Sign up</h2>
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-6 text-center">Registration Form</h1>
+  <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'w-full max-w-sm mx-auto bg-white p-8 rounded-md shadow-md new_user', local: true do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <div class="mb-4">
+      <%= f.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="mb-4">
+      <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="mb-4">
+      <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <% if @minimum_password_length %>
+      <em class="text-gray-600">(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="mb-4">
+      <%= f.label :password_confirmation, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="actions mb-4">
+      <%= f.submit "Sign up", class: "w-full bg-indigo-500 text-white text-sm font-bold py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+    <div class="text-center mt-4">
+      <%= link_to "Already have an account? Log in here.", new_session_path(resource_name), class: "text-indigo-500 hover:text-indigo-600" %>
+    </div>
+  <% end %>
+</div>
