@@ -1,0 +1,22 @@
+<div id="<%= dom_id stress_relief %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= stress_relief.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Detail:</strong>
+    <%= stress_relief.detail %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Difficulty:</strong>
+    <%= stress_relief.difficulty %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this stress relief", stress_relief, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this stress relief', edit_stress_relief_path(stress_relief), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
