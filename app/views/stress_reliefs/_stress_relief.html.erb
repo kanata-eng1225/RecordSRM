@@ -1,22 +1,21 @@
-<div id="<%= dom_id stress_relief %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= stress_relief.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Detail:</strong>
-    <%= stress_relief.detail %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Difficulty:</strong>
-    <%= stress_relief.difficulty %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this stress relief", stress_relief, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this stress relief', edit_stress_relief_path(stress_relief), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div class="w-1/3 p-4">
+  <div class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl m-4">
+    <%= link_to stress_relief do %>
+      <div>
+        <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= stress_relief.title.truncate(10, omission: '...') %></h1>
+        <div class="ml-4 mt-1 mb-2 text-gray-700">
+          <strong class="text-gray-800">概要:</strong> <%= stress_relief.detail.truncate(10, omission: '...') %>
+        </div>
+      </div>
+      <img class="w-full h-48 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
+      <div class="flex p-4 justify-between">
+        <div class="flex items-center space-x-2">
+          <h2 class="text-gray-800 font-bold cursor-pointer"><%= stress_relief.user.name %></h2>
+        </div>
+        <div class="text-gray-700 font-bold">
+          難易度: <%= stress_relief.difficulty %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
