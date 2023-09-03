@@ -4,12 +4,29 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @stress_relief %>
-
-    <%= link_to 'Edit this stress_relief', edit_stress_relief_path(@stress_relief), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this stress_relief', stress_relief_path(@stress_relief), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="max-w-2xl container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl m-4">
+      <div>
+        <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= @stress_relief.title %></h1>
+        <div class="ml-4 mt-1 mb-2 text-gray-700">
+          <strong class="text-gray-800">詳細:</strong> <%= @stress_relief.detail %>
+        </div>
+      </div>
+      <img class="w-full h-96 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{@stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
+      <div class="flex p-4 justify-between">
+        <div class="flex items-center space-x-2">
+          <h2 class="text-gray-800 font-bold cursor-pointer"><%= @stress_relief.user.name %></h2>
+        </div>
+        <div class="text-gray-700 font-bold">
+          難易度: <%= @stress_relief.difficulty %>
+        </div>
+      </div>
     </div>
-    <%= link_to 'Back to stress_reliefs', stress_reliefs_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <% if current_user == @stress_relief.user %>
+      <%= link_to 'Edit this stress_relief', edit_stress_relief_path(@stress_relief), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Destroy this stress_relief', stress_relief_path(@stress_relief), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
+    <% end %>
   </div>
 </div>
