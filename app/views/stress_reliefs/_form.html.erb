@@ -23,7 +23,12 @@
 
   <div class="my-5">
     <%= form.label :difficulty %>
-    <%= form.number_field :difficulty, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <div class="flex">
+      <% (1..StressRelief::MAX_DIFFICULTY).each do |rating| %>
+        <%= form.radio_button :difficulty, rating, checked: rating == stress_relief.difficulty, class: "hidden star-rating", id: "rating_#{rating}" %>
+        <%= form.label "rating_#{rating}", "★", class: (rating <= (stress_relief.difficulty || StressRelief::DEFAULT_DIFFICULTY) ? "text-yellow-500" : "text-gray-400") + " hover:text-yellow-500 cursor-pointer star-label" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="inline">

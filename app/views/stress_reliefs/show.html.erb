@@ -17,7 +17,12 @@
           <h2 class="text-gray-800 font-bold cursor-pointer"><%= @stress_relief.user.name %></h2>
         </div>
         <div class="text-gray-700 font-bold">
-          難易度: <%= @stress_relief.difficulty %>
+          難易度
+          <div class="flex">
+            <% (1..StressRelief::MAX_DIFFICULTY).each do |rating| %>
+              <span class="<%= rating <= @stress_relief.difficulty ? "text-yellow-500" : "text-gray-400" %>">★</span>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
