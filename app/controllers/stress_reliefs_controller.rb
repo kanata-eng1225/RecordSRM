@@ -15,6 +15,7 @@ class StressReliefsController < ApplicationController
   # GET /stress_reliefs/new
   def new
     @stress_relief = StressRelief.new
+    @stress_relief.difficulty ||= StressRelief::DEFAULT_DIFFICULTY
   end
 
   # GET /stress_reliefs/1/edit
