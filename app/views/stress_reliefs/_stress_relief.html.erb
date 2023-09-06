@@ -9,9 +9,6 @@
       </div>
       <img class="w-full h-48 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
       <div class="flex p-4 justify-between">
-        <div class="flex items-center space-x-2">
-          <h2 class="text-gray-800 font-bold cursor-pointer"><%= stress_relief.user.name %></h2>
-        </div>
         <div class="text-gray-700 font-bold">
           難易度
           <div class="flex">
@@ -20,6 +17,13 @@
             <% end %>
           </div>
         </div>
+        <div class="ml-4 mt-1 mb-2 text-gray-700">
+          <div><strong class="text-gray-800">タグ</strong></div>
+          <div><%= stress_relief.tag_names.join(', ') %></div>
+        </div>
+      </div>
+      <div class="flex p-4 justify-end">
+        <h2 class="text-gray-800 font-bold cursor-pointer"><%= stress_relief.user.name %></h2>
       </div>
     <% end %>
   </div>

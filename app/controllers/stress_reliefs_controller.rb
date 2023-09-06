@@ -86,6 +86,6 @@ class StressReliefsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stress_relief_params
-      params.require(:stress_relief).permit(:title, :detail, :difficulty)
+      params.require(:stress_relief).permit(:title, :detail, :difficulty, :tag_names)
     end
 end
