@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :stress_reliefs
+  has_many :likes, dependent: :destroy
+  has_many :liked_stress_reliefs, through: :likes, source: :stress_relief
 end
