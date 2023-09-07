@@ -22,8 +22,14 @@
           <div><%= stress_relief.tag_names.join(', ') %></div>
         </div>
       </div>
-      <div class="flex p-4 justify-end">
-        <h2 class="text-gray-800 font-bold cursor-pointer"><%= stress_relief.user.name %></h2>
+      <div class="flex p-4 justify-start">
+        <div class="mr-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-1 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+          </svg>
+          <span><%= stress_relief.likes.count %></span>
+        </div>
+        <h2 class="text-gray-800 font-bold cursor-pointer ml-auto"><%= stress_relief.user.name %></h2>
       </div>
     <% end %>
   </div>

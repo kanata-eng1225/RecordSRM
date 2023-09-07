@@ -2,6 +2,8 @@ class StressRelief < ApplicationRecord
   belongs_to :user
   has_many :stress_relief_tags, dependent: :destroy
   has_many :tags, through: :stress_relief_tags
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 
   # 難易度の最大値
   MAX_DIFFICULTY = 3
@@ -19,5 +21,15 @@ class StressRelief < ApplicationRecord
     self.tags = names.split(',').map do |name|
       Tag.where(name: name.strip).first_or_create!
     end
+  end
+
+  # いいねをしているかどうかを確認する。
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
+  # いいねのレコードを返す。
+  def user_like(user)
+    likes.find_by(user_id: user.id)
   end
 end
