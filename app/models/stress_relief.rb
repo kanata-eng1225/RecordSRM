@@ -24,8 +24,12 @@ class StressRelief < ApplicationRecord
   end
 
   # いいねをしているかどうかを確認する。
-  def liked_by?(user)
-    likes.exists?(user_id: user.id)
+  def liked_by?(like, user)
+    # likes.where(user_id: user.id).exists?
+    # likes.any? { |like| like.user_id == user.id }
+    like.pluck(:user_id).include?(user)
+    # likes.exists?(user_id: user.id)
+    # likes.pluck(:user_id).include?(user.id)
   end
 
   # いいねのレコードを返す。
