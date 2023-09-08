@@ -1,11 +1,14 @@
 class StressReliefsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_stress_relief, only: %i[ show edit update destroy ]
+  before_action :set_stress_relief, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   # GET /stress_reliefs or /stress_reliefs.json
   def index
-    @stress_reliefs = StressRelief.all
+    # @stress_reliefs = StressRelief.all
+    # @stress_reliefs = StressRelief.preload(:user, :likes, :tags)
+    @stress_reliefs = StressRelief.preload(:user, :tags)
+    # @stress_reliefs = StressRelief.includes(:user, :likes, :tags).all
   end
 
   # GET /stress_reliefs/1 or /stress_reliefs/1.json
@@ -77,7 +80,13 @@ class StressReliefsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stress_relief
-      @stress_relief = StressRelief.find(params[:id])
+      # @stress_relief = StressRelief.find(params[:id])
+      # @stress_relief = StressRelief.preload(:user, :likes, :tags).find(params[:id])
+      if action_name == 'edit'
+        @stress_relief = StressRelief.preload(:tags).find(params[:id])
+      else
+        @stress_relief = StressRelief.preload(:user, :likes, :tags).find(params[:id])
+      end
     end
 
     def ensure_correct_user
