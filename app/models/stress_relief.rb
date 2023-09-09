@@ -5,11 +5,14 @@ class StressRelief < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
 
-  # 難易度の最大値
-  MAX_DIFFICULTY = 3
-  
   # 難易度の初期値
   DEFAULT_DIFFICULTY = 1
+
+  # 難易度の最小値
+  MIN_DIFFICULTY = 1
+
+  # 難易度の最大値
+  MAX_DIFFICULTY = 3
 
   # タグ名を配列にする。
   def tag_names

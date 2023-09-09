@@ -4,7 +4,7 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="max-w-2xl container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl m-4">
+    <div class="max-w-2xl container bg-white rounded-xl shadow-lg m-4">
       <div>
         <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= @stress_relief.title %></h1>
         <div class="ml-4 mt-1 mb-2 text-gray-700">
@@ -13,17 +13,13 @@
       </div>
       <img class="w-full h-96 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{@stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
       <div class="flex p-4 justify-between">
-        <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <div><strong class="text-gray-800">タグ:</strong></div>
-          <div><%= @stress_relief.tag_names.join(', ') %></div>
-        </div>
         <div class="text-gray-700 font-bold">
           難易度
-          <div class="flex">
-            <% (1..StressRelief::MAX_DIFFICULTY).each do |rating| %>
-              <span class="<%= rating <= @stress_relief.difficulty ? "text-yellow-500" : "text-gray-400" %>">★</span>
-            <% end %>
-          </div>
+          <%= render 'difficulty_stars', difficulty: @stress_relief.difficulty %>
+        </div>
+        <div class="ml-4 mt-1 mb-2 text-gray-700">
+          <div><strong class="text-gray-800">タグ</strong></div>
+          <div><%= @stress_relief.tag_names.join(', ') %></div>
         </div>
       </div>
       <div class="flex p-4">
