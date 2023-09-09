@@ -1,0 +1,5 @@
+<div class="flex">
+  <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |rating| %>
+    <span class="<%= rating <= local_assigns[:difficulty] ? "text-yellow-500" : "text-gray-400" %>">★</span>
+  <% end %>
+</div>
