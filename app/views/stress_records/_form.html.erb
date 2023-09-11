@@ -27,8 +27,18 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :before_stress_level %>
-    <%= form.number_field :before_stress_level, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :before_stress_level, "Before Stress Level" %>
+    <div class="relative" data-controller="slider">
+      <%= form.range_field :before_stress_level, min: 0, max: 10, value: stress_record.before_stress_level || 0, class: "range", step: 1, data: { action: "input->slider#updateOutput", slider_target: "slider" } %>
+      <div class="w-full flex justify-between text-xs px-2">
+        <% (0..10).each do |i| %>
+          <span><%= i %></span>
+        <% end %>
+      </div>
+      <div class="text-center mt-2">
+        Current Value: <span data-slider-target="output"><%= stress_record.before_stress_level || 0 %></span>
+      </div>
+    </div>
   </div>
 
   <div class="my-5">
