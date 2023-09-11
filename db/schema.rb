@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_113134) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_071752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_113134) do
     t.index ["stress_relief_id"], name: "index_likes_on_stress_relief_id"
     t.index ["user_id", "stress_relief_id"], name: "index_likes_on_user_id_and_stress_relief_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "stress_records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "stress_relief_date", null: false
+    t.string "title"
+    t.text "detail"
+    t.integer "before_stress_level"
+    t.integer "after_stress_level"
+    t.text "impression"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stress_records_on_user_id"
   end
 
   create_table "stress_relief_tags", force: :cascade do |t|
@@ -66,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_113134) do
 
   add_foreign_key "likes", "stress_reliefs"
   add_foreign_key "likes", "users"
+  add_foreign_key "stress_records", "users"
   add_foreign_key "stress_relief_tags", "stress_reliefs"
   add_foreign_key "stress_relief_tags", "tags"
   add_foreign_key "stress_reliefs", "users"

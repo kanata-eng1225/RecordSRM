@@ -1,0 +1,2 @@
+module StressRecordsHelper
+end

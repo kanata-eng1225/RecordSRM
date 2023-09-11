@@ -1,0 +1,37 @@
+<div id="<%= dom_id stress_record %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Stress relief date:</strong>
+    <%= stress_record.stress_relief_date.to_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= stress_record.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Detail:</strong>
+    <%= stress_record.detail %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Before stress level:</strong>
+    <%= stress_record.before_stress_level %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">After stress level:</strong>
+    <%= stress_record.after_stress_level %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Impression:</strong>
+    <%= stress_record.impression %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this stress record", stress_record, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this stress record', edit_stress_record_path(stress_record), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

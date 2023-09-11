@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  stress_relief_date: 2023-09-10 16:17:52
+  title: MyString
+  detail: MyText
+  before_stress_level: 1
+  after_stress_level: 1
+  impression: MyText
+
+two:
+  user: two
+  stress_relief_date: 2023-09-10 16:17:52
+  title: MyString
+  detail: MyText
+  before_stress_level: 1
+  after_stress_level: 1
+  impression: MyText

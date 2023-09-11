@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stress_records
   resources :stress_reliefs do
     resources :likes, only: [:create, :destroy]
   end
