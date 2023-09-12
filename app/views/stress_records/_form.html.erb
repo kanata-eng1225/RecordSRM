@@ -13,7 +13,7 @@
 
   <div class="my-5">
     <%= form.label :stress_relief_date %>
-    <%= form.date_field :stress_relief_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :stress_relief_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/5" %>
   </div>
 
   <div class="my-5">
@@ -26,14 +26,14 @@
     <%= form.text_area :detail, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :before_stress_level %>
-    <%= form.number_field :before_stress_level, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 text-center font-bold">
+    ストレス解消法を実施
   </div>
 
-  <div class="my-5">
-    <%= form.label :after_stress_level %>
-    <%= form.number_field :after_stress_level, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex justify-between" style="width: 100%;">
+    <%= render 'stress_slider', form: form, label_symbol: :before_stress_level, label_text: "Before Stress Level", stress_value: stress_record.before_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "mr-4" %>
+
+    <%= render 'stress_slider', form: form, label_symbol: :after_stress_level, label_text: "After Stress Level", stress_value: stress_record.after_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "ml-4" %>
   </div>
 
   <div class="my-5">
