@@ -7,8 +7,33 @@
     <h1 class="font-bold text-4xl">Stress records</h1>
     <%= link_to 'New stress record', new_stress_record_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
-
-  <div id="stress_records" class="min-w-full">
-    <%= render @stress_records %>
+  <div id="stress_records" class="max-w-5xl mx-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+    <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+      <thead class="bg-gray-200">
+        <tr>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900" style="width: 13%;">Stress relief date</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Title</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Before</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">After</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 border-t border-gray-200">
+        <% @stress_records.each do |stress_record| %>
+          <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4"><%= stress_record.stress_relief_date.to_date %></td>
+            <td class="px-6 py-4"><%= stress_record.title %></td>
+            <td class="px-6 py-4"><%= stress_record.before_stress_level %></td>
+            <td class="px-6 py-4"><%= stress_record.after_stress_level %></td>
+            <td class="px-6 py-4">
+              <div class="flex justify-end gap-4">
+                <%= link_to "Show", stress_record, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+                <%= link_to 'Edit', edit_stress_record_path(stress_record), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
