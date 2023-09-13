@@ -1,9 +1,11 @@
 class StressRecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_stress_record, only: %i[ show edit update destroy ]
 
   # GET /stress_records or /stress_records.json
   def index
-    @stress_records = StressRecord.all
+    # @stress_records = StressRecord.all
+    @stress_records = current_user.stress_records
   end
 
   # GET /stress_records/1 or /stress_records/1.json
