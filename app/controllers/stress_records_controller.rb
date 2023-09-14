@@ -6,6 +6,9 @@ class StressRecordsController < ApplicationController
   def index
     # @stress_records = StressRecord.all
     @stress_records = current_user.stress_records
+    # @range = params[:range] || "week"
+    @range = ["week", "month"].include?(params[:range]) ? params[:range] : "week"
+    @data = StressRecord.get_data_for_range(@stress_records, @range)
   end
 
   # GET /stress_records/1 or /stress_records/1.json
