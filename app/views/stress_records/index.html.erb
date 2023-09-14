@@ -3,10 +3,22 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mb-12">
     <h1 class="font-bold text-4xl">Stress records</h1>
     <%= link_to 'New stress record', new_stress_record_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
+
+  <div class="my-5 max-w-5xl mx-auto">
+    <div class="border p-4 rounded relative backdrop-blur-md bg-opacity-85 bg-white">
+      <select class="select select-bordered bg-white w-auto max-w-sm absolute top-0 left-0 z-10" data-controller="records-chart" data-action="change->records-chart#changeRange">
+        <option value="week" <%= @range == "week" ? 'selected' : '' %>>Weekly</option>
+        <option value="month" <%= @range == "month" ? 'selected' : '' %>>Monthly</option>
+      </select>
+      <h2 class="font-bold text-2xl mb-4 text-center">ストレスレベルの変動</h2>
+      <%= line_chart @data, height: "400px", library: {title: "Before Stress Level"} %>
+    </div>
+  </div>
+
   <div id="stress_records" class="max-w-5xl mx-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
     <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
       <thead class="bg-gray-200">

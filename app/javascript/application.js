@@ -2,3 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "custom/rating"
+import "chartkick"
+import "Chart.bundle"
