@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      stress_record: "記録"
+    attributes:
+      stress_record:
+        stress_relief_date: "ストレス解消日"
+        title: "タイトル"
+        detail: "詳細"
+        before_stress_level: "ストレス解消前のストレスレベル"
+        after_stress_level: "ストレス解消後のストレスレベル"
+        impression: "所感"
+      stress_relief:
+        title: "タイトル"
+        detail: "詳細"
+        difficulty: "難易度"
+        tag_names: "タグ"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワードの確認"

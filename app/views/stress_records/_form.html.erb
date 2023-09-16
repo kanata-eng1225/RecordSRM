@@ -1,7 +1,7 @@
 <%= form_with(model: stress_record, class: "contents") do |form| %>
   <% if stress_record.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(stress_record.errors.count, "error") %> prohibited this stress_record from being saved:</h2>
+      <h2><%= t('stress_records.form.errors', count: stress_record.errors.count) %></h2>
 
       <ul>
         <% stress_record.errors.each do |error| %>
@@ -27,13 +27,13 @@
   </div>
 
   <div class="my-5 text-center font-bold">
-    ストレス解消法を実施
+    <%= t('stress_records.form.perform_stress_relief') %>
   </div>
 
   <div class="my-5 flex justify-between" style="width: 100%;">
-    <%= render 'stress_slider', form: form, label_symbol: :before_stress_level, label_text: "Before Stress Level", stress_value: stress_record.before_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "mr-4" %>
+    <%= render 'stress_slider', form: form, label_symbol: :before_stress_level, label_text: t('stress_records.stress_slider.before_stress_level'), stress_value: stress_record.before_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "mr-4" %>
 
-    <%= render 'stress_slider', form: form, label_symbol: :after_stress_level, label_text: "After Stress Level", stress_value: stress_record.after_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "ml-4" %>
+    <%= render 'stress_slider', form: form, label_symbol: :after_stress_level, label_text: t('stress_records.stress_slider.after_stress_level'), stress_value: stress_record.after_stress_level || StressRecord::STRESS_LEVEL_MIN, margin_class: "ml-4" %>
   </div>
 
   <div class="my-5">
@@ -42,6 +42,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit t('stress_records.form.submit'), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

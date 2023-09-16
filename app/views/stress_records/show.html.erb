@@ -6,10 +6,10 @@
 
     <%= render @stress_record %>
 
-    <%= link_to 'Edit this stress_record', edit_stress_record_path(@stress_record), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to t('stress_records.show.edit'), edit_stress_record_path(@stress_record), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this stress_record', stress_record_path(@stress_record), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to t('stress_records.show.destroy'), stress_record_path(@stress_record), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Back to stress_records', stress_records_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to t('stress_records.show.back'), stress_records_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

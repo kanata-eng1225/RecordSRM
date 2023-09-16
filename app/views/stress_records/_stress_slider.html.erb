@@ -7,7 +7,7 @@
   <%= form.range_field label_symbol, min: StressRecord::STRESS_LEVEL_MIN, max: StressRecord::STRESS_LEVEL_MAX, value: stress_value, class: "range w-full", step: StressRecord::STRESS_LEVEL_STEP, data: { action: "input->slider#updateOutput", slider_target: "slider" } %>
 
   <div class="w-full flex justify-between px-2 mt-2" style="position: relative;">
-    <span style="position: absolute; left: 0; transform: translateX(-50%); font-size: 0.7rem;">全くストレスを感じない</span>
-    <span style="position: absolute; right: 0; transform: translateX(50%); font-size: 0.7rem;">極度のストレスを感じる</span>
+    <span style="position: absolute; left: 0; transform: translateX(-50%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.no_stress') %></span>
+    <span style="position: absolute; right: 0; transform: translateX(50%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.extreme_stress') %></span>
   </div>
 </div>

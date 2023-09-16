@@ -4,8 +4,8 @@
   <% end %>
 
   <div class="flex justify-between items-center w-full mb-4 px-4">
-    <h1 class="font-bold text-4xl">Stress reliefs</h1>
-    <%= link_to 'New stress relief', new_stress_relief_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= t('stress_reliefs.index.title') %></h1>
+    <%= link_to t('stress_reliefs.index.new_stress_relief'), new_stress_relief_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="stress_reliefs" class="min-w-full flex flex-wrap justify-center">
