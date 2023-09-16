@@ -8,17 +8,17 @@
       <div>
         <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= @stress_relief.title %></h1>
         <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <strong class="text-gray-800">詳細:</strong> <%= @stress_relief.detail %>
+          <strong class="text-gray-800"><%= StressRelief.human_attribute_name(:detail) %>:</strong> <%= @stress_relief.detail %>
         </div>
       </div>
       <img class="w-full h-96 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{@stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
       <div class="flex p-4 justify-between">
         <div class="text-gray-700 font-bold">
-          難易度
+          <%= StressRelief.human_attribute_name(:difficulty) %>
           <%= render 'difficulty_stars', difficulty: @stress_relief.difficulty %>
         </div>
         <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <div><strong class="text-gray-800">タグ</strong></div>
+          <div><strong class="text-gray-800"><%= StressRelief.human_attribute_name(:tag_names) %></strong></div>
           <div><%= @stress_relief.tag_names.join(', ') %></div>
         </div>
       </div>
@@ -31,9 +31,9 @@
     </div>
 
     <% if current_user == @stress_relief.user %>
-      <%= link_to 'Edit this stress_relief', edit_stress_relief_path(@stress_relief), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to t('stress_reliefs.show.edit'), edit_stress_relief_path(@stress_relief), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       <div class="inline-block ml-2">
-        <%= button_to 'Destroy this stress_relief', stress_relief_path(@stress_relief), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%= button_to t('stress_reliefs.show.destroy'), stress_relief_path(@stress_relief), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
       </div>
     <% end %>
   </div>

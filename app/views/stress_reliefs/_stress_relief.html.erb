@@ -4,17 +4,17 @@
       <div>
         <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= stress_relief.title.truncate(10, omission: '...') %></h1>
         <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <strong class="text-gray-800">概要:</strong> <%= stress_relief.detail.truncate(10, omission: '...') %>
+          <strong class="text-gray-800"><%= t('stress_reliefs.stress_relief.overview') %>:</strong> <%= stress_relief.detail.truncate(10, omission: '...') %>
         </div>
       </div>
       <img class="w-full h-48 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
       <div class="flex p-4 justify-between">
         <div class="text-gray-700 font-bold">
-          難易度
+          <%= StressRelief.human_attribute_name(:difficulty) %>
           <%= render 'difficulty_stars', difficulty: stress_relief.difficulty %>
         </div>
         <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <div><strong class="text-gray-800">タグ</strong></div>
+          <div><strong class="text-gray-800"><%= StressRelief.human_attribute_name(:tag_names) %></strong></div>
           <div><%= stress_relief.tag_names.join(', ') %></div>
         </div>
       </div>

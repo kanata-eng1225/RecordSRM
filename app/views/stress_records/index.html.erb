@@ -4,17 +4,17 @@
   <% end %>
 
   <div class="flex justify-between items-center mb-12">
-    <h1 class="font-bold text-4xl">Stress records</h1>
-    <%= link_to 'New stress record', new_stress_record_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= t('stress_records.index.stress_records') %></h1>
+    <%= link_to t('stress_records.index.new_stress_record'), new_stress_record_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div class="my-5 max-w-5xl mx-auto">
     <div class="border p-4 rounded relative backdrop-blur-md bg-opacity-85 bg-white">
       <select class="select select-bordered bg-white w-auto max-w-sm absolute top-0 left-0 z-10" data-controller="records-chart" data-action="change->records-chart#changeRange">
-        <option value="week" <%= @range == "week" ? 'selected' : '' %>>Weekly</option>
-        <option value="month" <%= @range == "month" ? 'selected' : '' %>>Monthly</option>
+        <option value="week" <%= @range == "week" ? 'selected' : '' %>><%= t('stress_records.index.weekly') %></option>
+        <option value="month" <%= @range == "month" ? 'selected' : '' %>><%= t('stress_records.index.monthly') %></option>
       </select>
-      <h2 class="font-bold text-2xl mb-4 text-center">ストレスレベルの変動</h2>
+      <h2 class="font-bold text-2xl mb-4 text-center"><%= t('stress_records.index.stress_level_fluctuation') %></h2>
       <%= line_chart @data, height: "400px", library: {title: "Before Stress Level"} %>
     </div>
   </div>
@@ -23,10 +23,10 @@
     <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
       <thead class="bg-gray-200">
         <tr>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900" style="width: 13%;">Stress relief date</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Title</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Before</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">After</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900" style="width: 15%;"><%= t('stress_records.index.stress_relief_date') %></th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.title') %></th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.before') %></th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.after') %></th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
         </tr>
       </thead>
@@ -39,8 +39,8 @@
             <td class="px-6 py-4"><%= stress_record.after_stress_level %></td>
             <td class="px-6 py-4">
               <div class="flex justify-end gap-4">
-                <%= link_to "Show", stress_record, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-                <%= link_to 'Edit', edit_stress_record_path(stress_record), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+                <%= link_to t('stress_records.index.show'), stress_record, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+                <%= link_to t('stress_records.index.edit'), edit_stress_record_path(stress_record), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
               </div>
             </td>
           </tr>

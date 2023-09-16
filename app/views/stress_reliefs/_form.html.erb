@@ -1,7 +1,7 @@
 <%= form_with(model: stress_relief, class: "contents") do |form| %>
   <% if stress_relief.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(stress_relief.errors.count, "error") %> prohibited this stress_relief from being saved:</h2>
+      <h2><%= t('stress_reliefs.form.errors', count: stress_relief.errors.count) %></h2>
 
       <ul>
         <% stress_relief.errors.each do |error| %>
@@ -32,11 +32,11 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :tag_names, "Tags (comma separated)" %>
+    <%= form.label :tag_names, StressRelief.human_attribute_name(:tag_names) %>
     <%= form.text_field :tag_names, value: @stress_relief.tag_names.join(', '), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
 </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit t('stress_reliefs.form.submit'), class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

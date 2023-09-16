@@ -1,8 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing stress record</h1>
+  <h1 class="font-bold text-4xl"><%= t('stress_records.edit.editing_stress_record') %></h1>
 
   <%= render "form", stress_record: @stress_record %>
 
-  <%= link_to "Show this stress record", @stress_record, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to stress records", stress_records_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to t('stress_records.edit.show_stress_record'), @stress_record, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to t('stress_records.edit.back_to_stress_records'), stress_records_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

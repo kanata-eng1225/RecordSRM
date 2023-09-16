@@ -1,31 +1,31 @@
 <div id="<%= dom_id stress_record %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Stress relief date:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.stress_relief_date') %></strong>
     <%= stress_record.stress_relief_date.to_date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.title') %></strong>
     <%= stress_record.title %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Detail:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.detail') %></strong>
     <%= stress_record.detail %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Before stress level:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.before_stress_level') %></strong>
     <%= stress_record.before_stress_level %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">After stress level:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.after_stress_level') %></strong>
     <%= stress_record.after_stress_level %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Impression:</strong>
+    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.impression') %></strong>
     <%= stress_record.impression %>
   </p>
 

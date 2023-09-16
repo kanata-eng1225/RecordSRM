@@ -1,0 +1,95 @@
+ja:
+  defaults:
+    app_name: "RecordSRM"
+    sign_up: "新規登録"
+    login: "ログイン"
+    logout: "ログアウト"
+    logout_prompt: "ログアウトしますか？"
+  layouts:
+    header:
+      recommended_stress_relief: "オススメのストレス解消法"
+      ranking: "ランキング"
+      record: "記録"
+      likes_list: "いいね一覧"
+      mypage: "マイページ"
+    footer:
+      terms_of_service: "利用規約"
+      privacy_policy: "プライバシーポリシー"
+  stress_records:
+    form:
+      errors: "%{count}件のエラーが発生しました。"
+      perform_stress_relief: "ストレス解消法を実施"
+      submit: "作成"
+    stress_slider:
+      before_stress_level: "前のストレスレベル"
+      after_stress_level: "後のストレスレベル"
+      no_stress: "全くストレスを感じない"
+      extreme_stress: "極度のストレスを感じる"
+    edit:
+      editing_stress_record: "記録の編集"
+      show_stress_record: "記録の詳細"
+      back_to_stress_records: "記録一覧に戻る"
+    index:
+      stress_records: "記録一覧"
+      new_stress_record: "新規作成"
+      stress_level_fluctuation: "ストレスレベルの変動"
+      weekly: "週間"
+      monthly: "月間"
+      stress_relief_date: "ストレス解消日"
+      title: "タイトル"
+      before: "実施前のレベル"
+      after: "実施後のレベル"
+      show: "詳細"
+      edit: "編集"
+    new:
+      title: "記録の作成"
+      back_to_stress_records: "記録一覧に戻る"
+    show:
+      edit: "編集"
+      destroy: "削除"
+      back: "戻る"
+  stress_reliefs:
+    form:
+      errors: "%{count}件のエラーが発生しました。"
+      submit: "作成"
+    stress_relief:
+      overview: "概要"
+    edit:
+      title: "記録の編集"
+      show_stress_relief: "詳細へ"
+    index:
+      title: "オススメのストレス解消法一覧"
+      new_stress_relief: "新規作成"
+    new:
+      title: "オススメのストレス解消法は？"
+      back_to_stress_reliefs: "戻る"
+    show:
+      edit: "編集"
+      destroy: "削除"
+  users:
+    registrations:
+      new:
+        title: "新規登録"
+        characters_minimum: "文字以上"
+        sign_up: "サインアップ"
+        already_have_account: "ログインの方はこちら"
+    sessions:
+      new:
+        login_title: "ログイン"
+        login_button: "ログイン"
+        no_account_prompt: "アカウントをお持ちでないですか？"
+        create_one: "新規登録"
+        agreement_statement: "サービスを利用するには%{terms_of_service_link}および%{privacy_policy_link}に同意するものとします。"
+        continue_with_google: "Googleで続ける"
+        or: "または"
+  home:
+    index:
+      recommended_stress_relief: "オススメのストレス解消法の共有と"
+      record_effect: "その効果を記録しませんか？"
+      new_life_step: "新しい日常の一歩を"
+      start_here: "ここから"
+      what_is_recordsrm: "RecordSRMとは？"
+      recordsrm_description: "オススメのストレス解消法（Stress Relief Method:SRM）を共有でき、共有されている方法や自分で見つけた方法を実際に試して、その結果を記録できるサービスです。"
+      service_concept: "サービスコンセプト"
+      service_concept_description: "現代社会では多くの人がストレスを抱え、その解消法は人によって異なります。自分に適したストレス解消法を見つけること、そしてその効果を数値で確認するのは容易ではありません。RecordSRMでは、ユーザー間でオススメのストレス解消法を共有することで、新たな解消法を見つけるきっかけを提供します。さらに、試したストレス解消法の結果を記録し、その効果を数値化・視覚化することで、より効果的なストレス対策の発見と実行をサポートします。"
+      how_to_use: "使い方"
