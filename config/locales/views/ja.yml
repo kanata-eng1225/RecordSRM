@@ -8,10 +8,10 @@ ja:
   layouts:
     header:
       recommended_stress_relief: "オススメのストレス解消法"
-      ranking: "ランキング"
+      ranking: "ランキング(調整中)"
       record: "記録"
-      likes_list: "いいね一覧"
-      mypage: "マイページ"
+      likes_list: "いいね一覧(調整中)"
+      mypage: "マイページ(調整中)"
     footer:
       terms_of_service: "利用規約"
       privacy_policy: "プライバシーポリシー"
