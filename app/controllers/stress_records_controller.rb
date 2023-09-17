@@ -31,7 +31,7 @@ class StressRecordsController < ApplicationController
     # @stress_record = StressRecord.new(stress_record_params)
 
     if @stress_record.save
-      redirect_to stress_record_url(@stress_record), notice: "Stress record was successfully created."
+      redirect_to stress_records_path, notice: "Stress record was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class StressRecordsController < ApplicationController
   # PATCH/PUT /stress_records/1 or /stress_records/1.json
   def update
     if @stress_record.update(stress_record_params)
-      redirect_to stress_record_url(@stress_record), notice: "Stress record was successfully updated."
+      redirect_to stress_records_path, notice: "Stress record was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

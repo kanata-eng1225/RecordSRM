@@ -1,6 +1,6 @@
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <a class="btn btn-ghost normal-case text-xl"><%= t('defaults.app_name') %></a>
+    <%= link_to t('defaults.app_name'), root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
   <div class="navbar-end">
     <%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path, class: "btn btn-ghost normal-case text-xl" %>
