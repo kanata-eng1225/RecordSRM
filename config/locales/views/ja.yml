@@ -56,13 +56,13 @@ ja:
       overview: "概要"
     edit:
       title: "記録の編集"
-      show_stress_relief: "詳細へ"
+      show_stress_relief: "キャンセル"
     index:
       title: "オススメのストレス解消法一覧"
       new_stress_relief: "新規作成"
     new:
       title: "オススメのストレス解消法は？"
-      back_to_stress_reliefs: "戻る"
+      back_to_stress_reliefs: "キャンセル"
     show:
       edit: "編集"
       destroy: "削除"
