@@ -1,15 +1,16 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
+    <h1 class="font-bold text-4xl mb-2"><%= t('stress_records.show.title') %></h1>
+    
+    <div class="flex justify-end mb-5">
+      <%= link_to t('defaults.edit'), edit_stress_record_path(@stress_record), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 inline-block text-white font-medium mr-2" %>
+      <%= link_to t('defaults.destroy'), stress_record_path(@stress_record), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
+    </div>
+    
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
     <%= render @stress_record %>
-
-    <%= link_to t('stress_records.show.edit'), edit_stress_record_path(@stress_record), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to t('stress_records.show.destroy'), stress_record_path(@stress_record), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to t('stress_records.show.back'), stress_records_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

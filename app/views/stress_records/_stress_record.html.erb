@@ -1,37 +1,51 @@
-<div id="<%= dom_id stress_record %>">
-  <p class="my-5">
+<div id="<%= dom_id stress_record %>" class="max-w-3xl mx-auto overflow-auto">
+  <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.stress_relief_date') %></strong>
-    <%= stress_record.stress_relief_date.to_date %>
-  </p>
+    <p class="border border-gray-400 bg-gray-200 rounded-md p-2 w-40"><%= stress_record.stress_relief_date.to_date %></p>
+  </div>
 
-  <p class="my-5">
+  <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.title') %></strong>
-    <%= stress_record.title %>
-  </p>
+    <p class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px]"><%= stress_record.title %></p>
+  </div>
 
-  <p class="my-5">
+  <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.detail') %></strong>
-    <%= stress_record.detail %>
-  </p>
+    <p class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px]"><%= stress_record.detail %></p>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.before_stress_level') %></strong>
-    <%= stress_record.before_stress_level %>
-  </p>
+  <div class="my-5 text-center font-bold">
+    <%= t('stress_records.form.perform_stress_relief') %>
+  </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.after_stress_level') %></strong>
-    <%= stress_record.after_stress_level %>
-  </p>
+  <div class="my-5 flex justify-between mb-8">
+    <div class="relative w-1/3 mr-4 ml-14">
+      <label class="block text-center mb-2"><%= t('stress_records.stress_slider.before_stress_level') %></label>
+      <div class="text-center mb-4 border border-gray-400 bg-gray-200 rounded-md h-10 flex items-center justify-center">
+        <span class="text-red-500"><%= stress_record.before_stress_level %></span>
+      </div>
+      <input type="range" min="<%= StressRecord::STRESS_LEVEL_MIN %>" max="<%= StressRecord::STRESS_LEVEL_MAX %>" value="<%= stress_record.before_stress_level %>" class="range range-error w-full mb-4" step="<%= StressRecord::STRESS_LEVEL_STEP %>" disabled>
+      <div class="w-full flex justify-between px-2">
+        <span style="position: absolute; left: 0; transform: translateX(-40%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.no_stress') %></span>
+        <span style="position: absolute; right: 0; transform: translateX(40%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.extreme_stress') %></span>
+      </div>
+    </div>
 
-  <p class="my-5">
+    <div class="relative w-1/3 ml-4 mr-14">
+      <label class="block text-center mb-2"><%= t('stress_records.stress_slider.after_stress_level') %></label>
+      <div class="text-center mb-4 border border-gray-400 bg-gray-200 rounded-md h-10 flex items-center justify-center">
+        <span class="text-blue-500"><%= stress_record.after_stress_level %></span>
+      </div>
+      <input type="range" min="<%= StressRecord::STRESS_LEVEL_MIN %>" max="<%= StressRecord::STRESS_LEVEL_MAX %>" value="<%= stress_record.after_stress_level %>" class="range range-info w-full mb-4" step="<%= StressRecord::STRESS_LEVEL_STEP %>" disabled>
+      <div class="w-full flex justify-between px-2">
+        <span style="position: absolute; left: 0; transform: translateX(-40%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.no_stress') %></span>
+        <span style="position: absolute; right: 0; transform: translateX(40%); font-size: 0.7rem;"><%= t('stress_records.stress_slider.extreme_stress') %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.impression') %></strong>
-    <%= stress_record.impression %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this stress record", stress_record, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this stress record', edit_stress_record_path(stress_record), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+    <p class="border border-gray-400 bg-gray-200 rounded-md p-2  w-[768px]"><%= stress_record.impression %></p>
+  </div>
 </div>
