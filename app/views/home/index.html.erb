@@ -8,12 +8,12 @@
       <p class="font-sans text-xl font-semibold mb-5"><%= t('home.index.start_here') %></p>
       <% if user_signed_in? %>
         <div class="my-10">
-          <%= link_to t('defaults.logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_prompt') }, class: "btn btn-secondary font-semibold py-2 px-4 rounded hover:bg-gray-100" %>
+          <%= link_to t('defaults.logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_prompt') }, class: "rounded-lg py-3 px-5 bg-gray-400 hover:bg-gray-300 text-white font-medium" %>
         </div>
       <% else %>
         <div class="my-10 space-x-4">
-          <%= link_to t('defaults.login'), new_user_session_path, class: "btn btn-secondary font-semibold py-2 px-4 rounded hover:bg-gray-300" %>
-          <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "btn btn-accent font-semibold py-2 px-4 rounded hover:bg-gray-300" %>
+          <%= link_to t('defaults.login'), new_user_session_path, class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white font-medium" %>
+          <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "rounded-lg py-3 px-5 bg-emerald-500 hover:bg-emerald-400 text-white font-medium" %>
         </div>
       <% end %>
     </div>

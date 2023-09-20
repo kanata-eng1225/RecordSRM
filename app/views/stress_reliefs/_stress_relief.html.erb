@@ -1,21 +1,18 @@
 <div class="w-1/3 p-4">
-  <div class="max-w-xs container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl m-4">
+  <div class="max-w-xs container bg-white rounded-xl transform transition duration-500 hover:scale-110 m-4">
     <%= link_to stress_relief do %>
       <div>
-        <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100"><%= stress_relief.title.truncate(10, omission: '...') %></h1>
-        <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <strong class="text-gray-800"><%= t('stress_reliefs.stress_relief.overview') %>:</strong> <%= stress_relief.detail.truncate(10, omission: '...') %>
-        </div>
+        <h1 class="text-2xl" style="word-wrap: break-word; overflow-wrap: break-word;"><%= stress_relief.title %></h1>
       </div>
-      <img class="w-full h-48 object-cover cursor-pointer" src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
+      <img class="w-full h-48 object-cover" src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
       <div class="flex p-4 justify-between">
-        <div class="text-gray-700 font-bold">
+        <div>
           <%= StressRelief.human_attribute_name(:difficulty) %>
           <%= render 'difficulty_stars', difficulty: stress_relief.difficulty %>
         </div>
-        <div class="ml-4 mt-1 mb-2 text-gray-700">
-          <div><strong class="text-gray-800"><%= StressRelief.human_attribute_name(:tag_names) %></strong></div>
-          <div><%= stress_relief.tag_names.join(', ') %></div>
+        <div class="ml-4 mt-1 mb-2">
+          <div><%= StressRelief.human_attribute_name(:tag_names) %></div>
+          <div style="word-break: break-all;"><%= stress_relief.tag_names.join(', ') %></div>
         </div>
       </div>
       <div class="flex p-4 justify-start">
@@ -23,7 +20,9 @@
           <%= render 'like_icon_outline' %>
           <span><%= stress_relief.likes.count %></span>
         </div>
-        <h2 class="text-gray-800 font-bold cursor-pointer ml-auto"><%= stress_relief.user.name %></h2>
+        <div class="ml-auto" style="word-wrap: break-word; overflow-wrap: break-word; max-width: 90%; min-width: 0;">
+          <h2><%= stress_relief.user.name %></h2>
+        </div>
       </div>
     <% end %>
   </div>
