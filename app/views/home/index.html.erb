@@ -1,45 +1,41 @@
-<div class="relative">
-  <div class="sticky top-0 flex h-screen items-center">
-    <img src="<%= image_url('stress_top1.jpg') %>" class="h-full w-full object-cover" />
-    <div class="absolute top-10 right-0 m-auto flex w-2/4 flex-col items-center justify-start gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-4xl font-bold mt-4 mb-4"><%= t('home.index.recommended_stress_relief') %></h2>
-      <h2 class="text-4xl font-bold mb-20"><%= t('home.index.record_effect') %></h2>
-      <p class="font-sans text-xl font-semibold mb-4"><%= t('home.index.new_life_step') %></p>
-      <p class="font-sans text-xl font-semibold mb-5"><%= t('home.index.start_here') %></p>
-      <% if user_signed_in? %>
-        <div class="my-10">
-          <%= link_to t('defaults.logout'), destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_prompt') }, class: "rounded-lg py-3 px-5 bg-gray-400 hover:bg-gray-300 text-white font-medium" %>
-        </div>
-      <% else %>
-        <div class="my-10 space-x-4">
-          <%= link_to t('defaults.login'), new_user_session_path, class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white font-medium" %>
-          <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "rounded-lg py-3 px-5 bg-emerald-500 hover:bg-emerald-400 text-white font-medium" %>
-        </div>
-      <% end %>
+<div class="relative h-screen bg-cover bg-center" style="background-image: url(<%= image_url('stress_top1.jpg') %>)">
+  <div class="absolute top-10 right-0 m-auto w-2/4 flex flex-col items-center justify-start gap-4 p-10 mx-auto">
+    <h2 class="text-3xl font-bold mb-2"><%= t('home.index.recommended_stress_relief') %></h2>
+    <p class="text-3xl font-bold mb-5"><%= t('home.index.record_effect') %></p>
+    <p class="text-2xl mb-4"><%= t('home.index.new_life_step') %></p>
+    <p class="text-2xl mb-10"><%= t('home.index.start_here') %></p>
+    <% unless user_signed_in? %>
+      <div class="flex space-x-4">
+        <%= link_to t('defaults.login'), new_user_session_path, class: "py-2 px-4 bg-sky-500 text-white rounded hover:bg-sky-400" %>
+        <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "py-2 px-4 bg-emerald-500 text-white rounded hover:bg-emerald-400" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="relative h-screen bg-cover bg-center" style="background-image: url(<%= image_url('stress_top2.jpg') %>)">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="text-center max-w-xl">
+      <h2 class="text-4xl font-bold text-white mb-6"><%= t('home.index.what_is_recordsrm') %></h2>
+      <p class="text-2xl text-white"><%= t('home.index.recordsrm_description') %></p>
     </div>
   </div>
+</div>
 
-  <div class="sticky top-0 flex h-screen items-center">
-    <img src="<%= image_url('stress_top2.jpg') %>" class="h-full w-full object-cover" />
-    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-2xl font-bold text-white"><%= t('home.index.what_is_recordsrm') %></h2>
-      <p class="font-sans text-lg text-white"><%= t('home.index.recordsrm_description') %></p>
+<div class="relative h-screen bg-cover bg-center" style="background-image: url(<%= image_url('stress_top3.jpg') %>)">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="text-center max-w-xl">
+      <h2 class="text-4xl font-bold text-white mb-6"><%= t('home.index.service_concept') %></h2>
+      <p class="text-2xl text-white"><%= t('home.index.service_concept_description') %></p>
     </div>
   </div>
+</div>
 
-  <div class="sticky top-0 flex h-screen items-center">
-    <img src="<%= image_url('stress_top3.jpg') %>" class="h-full w-full object-cover" />
-    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-2xl font-bold text-white"><%= t('home.index.service_concept') %></h2>
-      <p class="font-sans text-lg text-white"><%= t('home.index.service_concept_description') %></p>
-    </div>
-  </div>
-
-  <div class="sticky top-0 flex h-screen items-center">
-    <img src="<%= image_url('stress_top4.jpg') %>" class="h-full w-full object-cover" />
-    <div class="absolute left-0 right-0 m-auto flex w-2/4 flex-col items-start justify-center gap-4 p-10 backdrop-blur-xl mx-auto">
-      <h2 class="text-2xl font-bold text-white"><%= t('home.index.how_to_use') %></h2>
-      <p class="font-sans text-lg text-white">調整中</p>
+<div class="relative h-screen bg-cover bg-center" style="background-image: url(<%= image_url('stress_top4.jpg') %>)">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="text-center max-w-xl">
+      <h2 class="text-4xl font-bold text-white mb-6"><%= t('home.index.how_to_use') %></h2>
+      <p class="text-2xl text-white">調整中</p>
     </div>
   </div>
 </div>
