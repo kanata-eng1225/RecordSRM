@@ -39,6 +39,7 @@ ja:
       weekly: "週間"
       monthly: "月間"
       stress_relief_date: "ストレス解消日"
+      title_stress_relief: "ストレス解消法"
       before: "実施前のレベル"
       after: "実施後のレベル"
     show:
@@ -50,20 +51,17 @@ ja:
     form:
       errors: "%{count}件のエラーが発生しました。"
       submit: "作成"
-    stress_relief:
-      overview: "概要"
     edit:
-      title: "記録の編集"
+      title: "オススメのストレス解消法の編集"
       show_stress_relief: "キャンセル"
     index:
-      title: "オススメのストレス解消法一覧"
+      title: "オススメのストレス解消法の一覧"
       new_stress_relief: "新規作成"
     new:
       title: "オススメのストレス解消法は？"
       back_to_stress_reliefs: "キャンセル"
     show:
-      edit: "編集"
-      destroy: "削除"
+      title: "オススメのストレス解消法の詳細"
   users:
     registrations:
       new:
@@ -75,8 +73,7 @@ ja:
       new:
         login_title: "ログイン"
         login_button: "ログイン"
-        no_account_prompt: "アカウントをお持ちでないですか？"
-        create_one: "新規登録"
+        create_one: "新規登録はこちら"
         agreement_statement: "サービスを利用するには%{terms_of_service_link}および%{privacy_policy_link}に同意するものとします。"
         continue_with_google: "Googleで続ける"
         or: "または"
