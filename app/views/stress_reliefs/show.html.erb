@@ -1,42 +1,50 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="mx-auto md:w-2/3 w-full p-5">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
 
-    <h1 class="font-bold text-4xl"><%= t('stress_reliefs.show.title') %></h1>
-
+  <div class="flex justify-between items-start mb-6">
+    <h1 class="text-4xl font-bold"><%= t('stress_reliefs.show.title') %></h1>
     <% if current_user == @stress_relief.user %>
-      <div class="flex justify-end mb-2">
+      <div class="flex space-x-4">
         <%= link_to t('defaults.edit'), edit_stress_relief_path(@stress_relief), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 text-white inline-block font-medium mr-2" %>
         <%= link_to t('defaults.destroy'), stress_relief_path(@stress_relief), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
       </div>
     <% end %>
+  </div>
 
-    <div class="max-w-2xl w-[450px] container bg-white rounded-xl m-4">
-      <h1 class="text-2xl" style="word-wrap: break-word; overflow-wrap: break-word;"><%= @stress_relief.title %></h1>
-      <img class="w-full h-96 object-cover" src="<%= asset_path "stress_relief_board#{@stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" />
-      <div class="ml-4 mt-1 mb-2" style="word-break: break-all;">
-        <span><%= StressRelief.human_attribute_name(:detail) %>:</span> <%= @stress_relief.detail %>
+  <div class="my-5">
+    <label class="block text-lg font-medium mb-2"><%= StressRelief.human_attribute_name(:title) %></label>
+    <div class="block w-full px-3 py-2 border-2 border-gray-400 rounded-md bg-gray-200 text-xl break-all">
+      <%= @stress_relief.title %>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <label class="block text-lg font-medium mb-2"><%= StressRelief.human_attribute_name(:detail) %></label>
+    <div class="block w-full px-3 py-2 border-2 border-gray-400 rounded-md bg-gray-200 text-xl break-all">
+      <%= @stress_relief.detail %>
+    </div>
+  </div>
+
+  <div class="my-5 flex">
+    <div class="mr-20">
+      <label class="block text-lg font-medium mb-2"><%= StressRelief.human_attribute_name(:difficulty) %></label>
+      <div class="text-xl">
+        <%= render 'difficulty_stars', difficulty: @stress_relief.difficulty %>
       </div>
-      <div class="flex p-4 justify-between">
-        <div>
-          <%= StressRelief.human_attribute_name(:difficulty) %>
-          <%= render 'difficulty_stars', difficulty: @stress_relief.difficulty %>
-        </div>
-        <div class="ml-4 mt-1 mb-2">
-          <div><%= StressRelief.human_attribute_name(:tag_names) %></div>
-          <div style="word-break: break-all;"><%= @stress_relief.tag_names.join(', ') %></div>
-        </div>
-      </div>
-      <div class="flex p-4">
-        <div class="flex items-center">
-          <%= render 'like_link', stress_relief: @stress_relief %>
-        </div>
-        <div class="ml-auto" style="word-wrap: break-word; overflow-wrap: break-word; max-width: 90%; min-width: 0;">
-          <h2><%= @stress_relief.user.name %></h2>
-        </div>
-      </div>
+    </div>
+    <div class="flex-grow ml-20">
+      <label class="block text-lg font-medium mb-2"><%= StressRelief.human_attribute_name(:tag_names) %></label>
+      <p class="text-xl break-all"><%= @stress_relief.tag_names.join(', ') %></p>
+    </div>
+  </div>
+
+  <div class="mt-5 flex justify-between items-end">
+    <%= render 'like_link', stress_relief: @stress_relief %>
+    <div>
+      <label class="block text-lg font-medium mb-2"><%= User.human_attribute_name(:name) %></label>
+      <p class="text-xl"><%= @stress_relief.user.name %></p>
     </div>
   </div>
 </div>
