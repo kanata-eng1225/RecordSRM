@@ -10,6 +10,7 @@ ja:
     show: "詳細"
     edit: "編集"
     destroy: "削除"
+    delete_message: "本当に削除しますか？"
   layouts:
     header:
       recommended_stress_relief: "オススメのストレス解消法"
@@ -38,7 +39,7 @@ ja:
       stress_level_fluctuation: "ストレスレベルの変動"
       weekly: "週間"
       monthly: "月間"
-      stress_relief_date: "ストレス解消日"
+      stress_relief_date: "実施日"
       title_stress_relief: "ストレス解消法"
       before: "実施前のレベル"
       after: "実施後のレベル"

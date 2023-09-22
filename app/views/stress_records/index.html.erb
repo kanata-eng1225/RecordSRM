@@ -19,35 +19,30 @@
     </div>
   </div>
 
-  <div id="stress_records" class="max-w-5xl mx-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-    <div class="overflow-x-auto">
-      <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-        <thead class="bg-gray-200">
-          <tr>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900" style="width: 15%;"><%= t('stress_records.index.stress_relief_date') %></th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.title_stress_relief') %></th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.before') %></th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900"><%= t('stress_records.index.after') %></th>
-            <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+  <div class="my-5 max-w-5xl mx-auto">
+    <table class="min-w-full bg-white rounded-lg overflow-hidden">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="py-2 px-4 text-left w-32"><%= t('stress_records.index.stress_relief_date') %></th>
+          <th class="py-2 px-4 text-left"><%= t('stress_records.index.title_stress_relief') %></th>
+          <th class="py-2 px-4 text-left"><%= t('stress_records.index.before') %></th>
+          <th class="py-2 px-4 text-left"><%= t('stress_records.index.after') %></th>
+          <th class="py-2 px-4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stress_records.each do |stress_record| %>
+          <tr class="hover:bg-gray-50 transition-colors duration-200 border">
+            <td class="py-2 px-4 w-32 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.stress_relief_date.to_date %></td>
+            <td class="py-2 px-4 break-all cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.title %></td>
+            <td class="py-2 px-4 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.before_stress_level %></td>
+            <td class="py-2 px-4 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.after_stress_level %></td>
+            <td class="py-2 px-4 flex justify-end">
+              <%= link_to t('defaults.destroy'), stress_record_path(stress_record), method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_message') }, class: "btn btn-ghost ml-2 bg-red-500 hover:bg-red-400 text-white" %>
+            </td>
           </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200 border-t border-gray-200">
-          <% @stress_records.each do |stress_record| %>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4"><%= stress_record.stress_relief_date.to_date %></td>
-              <td class="px-6 py-4"><%= stress_record.title %></td>
-              <td class="px-6 py-4"><%= stress_record.before_stress_level %></td>
-              <td class="px-6 py-4"><%= stress_record.after_stress_level %></td>
-              <td class="px-6 py-4">
-                <div class="flex justify-end gap-4">
-                  <%= link_to t('defaults.show'), stress_record, class: "rounded-lg py-3 px-5 bg-gray-300 hover:bg-gray-200 inline-block font-medium" %>
-                  <%= link_to t('defaults.destroy'), stress_record, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white inline-block font-medium" %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
