@@ -4,7 +4,7 @@ ja:
     sign_up: "新規登録"
     login: "ログイン"
     logout: "ログアウト"
-    logout_prompt: "ログアウトしますか？"
+    logout_message: "本当にログアウトしますか？"
     create: "作成"
     update: "更新"
     show: "詳細"
