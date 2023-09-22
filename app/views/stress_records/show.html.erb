@@ -4,7 +4,7 @@
     
     <div class="flex justify-end mb-5">
       <%= link_to t('defaults.edit'), edit_stress_record_path(@stress_record), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 inline-block text-white font-medium mr-2" %>
-      <%= link_to t('defaults.destroy'), stress_record_path(@stress_record), data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
+      <%= link_to t('defaults.destroy'), stress_record_path(@stress_record), data: { turbo_method: 'delete', turbo_confirm: t('defaults.delete_message') }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
     </div>
     
     <% if notice.present? %>
