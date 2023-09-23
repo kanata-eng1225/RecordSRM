@@ -1,4 +1,4 @@
-<%= link_to stress_relief_path(stress_relief), class: "block border p-5 rounded-xl hover:scale-105 transform transition-transform duration-300 bg-white flex-shrink-0 m-2", style: "min-height: 400px; flex-basis: calc(33.333% - 1rem); align-self: start;" do %>
+<%= link_to stress_relief_path(stress_relief), class: "board-item block border p-5 rounded-xl hover:scale-105 transform transition-transform duration-300 bg-white m-2 w-80 self-start", style: "min-height: 400px;" do %>
   <h2 class="font-bold text-2xl mb-4 break-all"><%= stress_relief.title %></h2>
   <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
   

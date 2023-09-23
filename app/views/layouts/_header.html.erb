@@ -1,25 +1,27 @@
 <div class="navbar bg-base-100">
-  <div class="navbar-start">
-    <%= link_to t('defaults.app_name'), root_path, class: "btn btn-ghost normal-case text-xl" %>
-  </div>
-  <div class="navbar-end">
-    <%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path, class: "btn btn-ghost normal-case text-xl" %>
-    <a class="btn btn-ghost normal-case text-xl"><%= t('layouts.header.ranking') %></a>
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost btn-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-      </label>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 origin-top-right right-0">
-        <% if user_signed_in? %>
-          <li><%= link_to t('layouts.header.record'), stress_records_path %></li>
-          <li><%= link_to t('layouts.header.likes_list'), "#" %></li>
-          <li><%= link_to t('layouts.header.mypage'), "#" %></li>
-          <li><%= link_to t('defaults.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_message') } %></li>
-        <% else %>
-          <li><%= link_to t('defaults.login'), new_user_session_path %></li>
-          <li><%= link_to t('defaults.sign_up'), new_user_registration_path %></li>
-        <% end %>
-      </ul>
+  <div class="flex flex-wrap justify-between w-full items-center">
+    <div class="navbar-start mb-2 sm:mb-0">
+      <%= link_to t('defaults.app_name'), root_path, class: "btn btn-ghost normal-case text-xl" %>
+    </div>
+    <div class="navbar-end flex-grow space-x-2 flex items-center justify-end flex-wrap">
+      <%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path, class: "btn btn-ghost normal-case text-sm sm:text-base lg:text-lg xl:text-xl" %>
+      <a class="btn btn-ghost normal-case text-sm sm:text-base lg:text-lg xl:text-xl"><%= t('layouts.header.ranking') %></a>
+      <div class="dropdown ml-auto">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 origin-top-right right-0">
+          <% if user_signed_in? %>
+            <li><%= link_to t('layouts.header.record'), stress_records_path %></li>
+            <li><%= link_to t('layouts.header.likes_list'), "#" %></li>
+            <li><%= link_to t('layouts.header.mypage'), "#" %></li>
+            <li><%= link_to t('defaults.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_message') } %></li>
+          <% else %>
+            <li><%= link_to t('defaults.login'), new_user_session_path %></li>
+            <li><%= link_to t('defaults.sign_up'), new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
