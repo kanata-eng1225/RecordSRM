@@ -13,7 +13,7 @@ class StressRecordsController < ApplicationController
 
   def new
     @stress_record = StressRecord.new
-    @stress_record.stress_relief_date = Date.today
+    @stress_record.stress_relief_date = Time.zone.today
   end
 
   def edit
