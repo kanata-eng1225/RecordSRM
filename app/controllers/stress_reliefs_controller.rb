@@ -4,7 +4,7 @@ class StressReliefsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @stress_reliefs = StressRelief.preload(:user, :tags)
+    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
   def show
