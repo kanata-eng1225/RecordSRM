@@ -1,3 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="<%= key == 'notice' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %> p-4 rounded-md">
+    <%= value %>
+  </div>
+<% end %>
+
 <div class="relative h-screen bg-cover bg-center" style="background-image: url(<%= image_url('stress_top1.jpg') %>)">
   <div class="absolute top-10 right-0 m-auto w-2/4 flex flex-col items-center justify-start gap-4 p-10 mx-auto">
     <h2 class="text-3xl font-bold mb-2"><%= t('home.index.recommended_stress_relief') %></h2>

@@ -22,27 +22,29 @@ class StressReliefsController < ApplicationController
     @stress_relief = current_user.stress_reliefs.build(stress_relief_params)
 
     if @stress_relief.save
-      redirect_to stress_relief_path(@stress_relief), notice: "Stress relief was successfully created."
+      redirect_to stress_relief_path(@stress_relief), notice: t('stress_reliefs.create.success')
     else
+      flash.now[:alert] = t('stress_reliefs.create.failure')
       render :new
     end
   end
 
   def update
     if @stress_relief.update(stress_relief_params)
-      redirect_to stress_relief_path(@stress_relief), notice: "Stress relief was successfully updated."
+      redirect_to stress_relief_path(@stress_relief), notice: t('stress_reliefs.update.success')
     else
+      flash.now[:alert] = t('stress_reliefs.update.failure')
       render :edit
     end
   end
 
   def destroy
     @stress_relief.destroy
-    redirect_to stress_reliefs_path, notice: "Stress relief was successfully destroyed."
+    redirect_to stress_reliefs_path, notice: t('stress_reliefs.destroy.success')
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_stress_relief
       if action_name == 'edit'
         @stress_relief = StressRelief.preload(:tags).find(params[:id])
@@ -52,10 +54,9 @@ class StressReliefsController < ApplicationController
     end
 
     def ensure_correct_user
-      redirect_to stress_reliefs_path, alert: "Not authorized" unless @stress_relief.user_id == current_user.id
+      redirect_to stress_reliefs_path, alert: t('stress_reliefs.unauthorized') unless @stress_relief.user_id == current_user.id
     end
 
-    # Only allow a list of trusted parameters through.
     def stress_relief_params
       params.require(:stress_relief).permit(:title, :detail, :difficulty, :tag_names)
     end

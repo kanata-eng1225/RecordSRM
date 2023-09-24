@@ -48,6 +48,14 @@ ja:
     new:
       title: "記録の作成"
       back_to_stress_records: "キャンセル"
+    create:
+      success: "記録が正常に作成されました。"
+      error: "ストレス記録の作成に失敗しました。"
+    update:
+      success: "記録が正常に更新されました。"
+      error: "ストレス記録の更新に失敗しました。"
+    destroy:
+      success: "記録が正常に削除されました。"
   stress_reliefs:
     form:
       errors: "%{count}件のエラーが発生しました。"
@@ -63,21 +71,15 @@ ja:
       back_to_stress_reliefs: "キャンセル"
     show:
       title: "オススメのストレス解消法の詳細"
-  users:
-    registrations:
-      new:
-        title: "新規登録"
-        characters_minimum: "文字以上"
-        sign_up: "サインアップ"
-        already_have_account: "ログインの方はこちら"
-    sessions:
-      new:
-        login_title: "ログイン"
-        login_button: "ログイン"
-        create_one: "新規登録はこちら"
-        agreement_statement: "サービスを利用するには%{terms_of_service_link}および%{privacy_policy_link}に同意するものとします。"
-        continue_with_google: "Googleで続ける"
-        or: "または"
+    create:
+      success: "オススメのストレス解消法が正常に作成されました。"
+      failure: "ストレス解消法の作成に失敗しました。"
+    update:
+      success: "オススメのストレス解消法が正常に更新されました。"
+      failure: "ストレス解消法の更新に失敗しました。"
+    destroy:
+      success: "オススメのストレス解消法が正常に削除されました。"
+    unauthorized: "権限がありません。"
   home:
     index:
       recommended_stress_relief: "オススメのストレス解消法の共有と"
