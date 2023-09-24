@@ -1,6 +1,12 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
   <div class="bg-white p-8 rounded-lg shadow-md w-96">
-    <h2 class="text-2xl font-bold mb-6 text-center"><%= t('users.sessions.new.login_title') %></h2>
+    <h2 class="text-2xl font-bold mb-6 text-center"><%= t('devise.sessions.new.login_title') %></h2>
+
+    <% if flash[:alert] %>
+      <div class="bg-red-500 text-white p-3 rounded mb-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
       <div>
@@ -14,16 +20,16 @@
       </div>
 
       <div>
-        <%= f.submit t('users.sessions.new.login_button'), class: "w-full p-2 text-white bg-sky-500 text-white rounded-md hover:bg-sky-400" %>
+        <%= f.submit t('devise.sessions.new.sign_in'), class: "w-full p-2 text-white bg-sky-500 text-white rounded-md hover:bg-sky-400" %>
       </div>
     <% end %>
 
     <div class="mt-4 text-center">
-      <%= link_to t('users.sessions.new.create_one'), new_user_registration_path, class: "text-emerald-500 hover:underline" %>
+      <%= link_to t('devise.sessions.new.create_one'), new_user_registration_path, class: "text-emerald-500 hover:underline" %>
     </div>
 
     <p class="mt-4 text-sm text-center text-gray-600">
-      <%= t('users.sessions.new.agreement_statement', terms_of_service_link: link_to(t('layouts.footer.terms_of_service'), "#", class: "text-gray-400 hover:underline"), privacy_policy_link: link_to(t('layouts.footer.privacy_policy'), "#", class: "text-gray-400 hover:underline")).html_safe %>
+      <%= t('devise.sessions.new.agreement_statement', terms_of_service_link: link_to(t('layouts.footer.terms_of_service'), "#", class: "text-gray-400 hover:underline"), privacy_policy_link: link_to(t('layouts.footer.privacy_policy'), "#", class: "text-gray-400 hover:underline")).html_safe %>
     </p>
   </div>
 </div>

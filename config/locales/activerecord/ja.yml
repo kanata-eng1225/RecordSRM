@@ -15,8 +15,3 @@ ja:
         detail: "詳細"
         difficulty: "難易度"
         tag_names: "タグ"
-      user:
-        name: "名前"
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワードの確認"

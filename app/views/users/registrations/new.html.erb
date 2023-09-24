@@ -1,40 +1,44 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
   <div class="bg-white p-8 rounded-lg shadow-md w-96">
-    <h2 class="text-2xl font-bold mb-6 text-center"><%= t('users.registrations.new.title') %></h2>
+    <h2 class="text-2xl font-bold mb-6 text-center"><%= t('devise.registrations.new.title') %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-4" }) do |f| %>
       <%= render "users/shared/error_messages", resource: resource %>
 
       <div>
-        <%= f.label :name, class: "block text-sm font-medium text-gray-600" %>
+        <%= f.label :name, class: "block text-sm font-medium text-gray-600 inline-block" %>
+        <span class="text-red-500">*</span>
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
       </div>
 
       <div>
-        <%= f.label :email, class: "block text-sm font-medium text-gray-600" %>
+        <%= f.label :email, class: "block text-sm font-medium text-gray-600 inline-block" %>
+        <span class="text-red-500">*</span>
         <%= f.email_field :email, autocomplete: "email", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
       </div>
 
       <div>
-        <%= f.label :password, class: "block text-sm font-medium text-gray-600" %>
+        <%= f.label :password, class: "block text-sm font-medium text-gray-600 inline-block" %>
         <% if @minimum_password_length %>
-        <em class="text-xs text-gray-500">(<%= @minimum_password_length %> <%= t('users.registrations.new.characters_minimum') %>)</em>
+        <em class="text-xs text-gray-500">(<%= @minimum_password_length %> <%= t('devise.registrations.new.characters_minimum') %>)</em>
         <% end %>
+        <span class="text-red-500">*</span>
         <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
       </div>
 
       <div>
-        <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-600" %>
+        <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-600 inline-block" %>
+        <span class="text-red-500">*</span>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
       </div>
 
       <div>
-        <%= f.submit t('users.registrations.new.sign_up'), class: "w-full p-2 text-white bg-emerald-500 rounded-md hover:bg-emerald-400" %>
+        <%= f.submit t('devise.registrations.new.sign_up'), class: "w-full p-2 text-white bg-emerald-500 rounded-md hover:bg-emerald-400" %>
       </div>
     <% end %>
 
     <div class="mt-4 text-center">
-      <%= link_to "ログインの方はこちら", new_session_path(resource_name), class: "text-sky-500 hover:underline" %>
+      <%= link_to t('devise.registrations.new.already_have_account'), new_session_path(resource_name), class: "text-sky-500 hover:underline" %>
     </div>
   </div>
 </div>

@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :stress_records
   has_many :likes, dependent: :destroy
   has_many :liked_stress_reliefs, through: :likes, source: :stress_relief
+
+  validates :name, presence: true
 end
