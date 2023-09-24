@@ -105,7 +105,7 @@ ja:
         sign_up: アカウント登録
         title: 新規登録
         characters_minimum: 文字以上
-        already_have_account: ログインの方はこちら
+        already_have_account: ログインはこちら
       signed_up: アカウント登録が完了しました。
       signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
       signed_up_but_locked: アカウントがロックされているためログインできません。
