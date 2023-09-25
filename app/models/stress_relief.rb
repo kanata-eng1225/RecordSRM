@@ -5,6 +5,10 @@ class StressRelief < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
 
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :detail, presence: true
+  validates :difficulty, presence: true
+
   # 難易度の初期値
   DEFAULT_DIFFICULTY = 1
 

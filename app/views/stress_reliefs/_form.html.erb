@@ -12,17 +12,20 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :title %>
+    <%= form.label :title, class: "inline-block" %>
+    <span class="text-red-500">*</span>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :detail %>
+    <%= form.label :detail, class: "inline-block" %>
+    <span class="text-red-500">*</span>
     <%= form.text_area :detail, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :difficulty %>
+    <%= form.label :difficulty, class: "inline-block" %>
+    <span class="text-red-500">*</span>
     <div class="flex">
       <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |rating| %>
         <%= form.radio_button :difficulty, rating, checked: rating == stress_relief.difficulty, class: "hidden star-rating", id: "rating_#{rating}" %>
@@ -33,8 +36,8 @@
 
   <div class="my-5">
     <%= form.label :tag_names, StressRelief.human_attribute_name(:tag_names) %>
-    <%= form.text_field :tag_names, value: @stress_relief.tag_names.join(', '), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-</div>
+    <%= form.text_field :tag_names, value: @stress_relief.tag_names.join(', '), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: t('stress_reliefs.form.placeholders.tag_names') %>
+  </div>
 
   <div class="inline">
     <%= form.submit stress_relief.new_record? ? t('defaults.create') : t('defaults.update'), class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white inline-block font-medium cursor-pointer" %>

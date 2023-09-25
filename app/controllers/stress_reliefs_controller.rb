@@ -24,8 +24,7 @@ class StressReliefsController < ApplicationController
     if @stress_relief.save
       redirect_to stress_relief_path(@stress_relief), notice: t('stress_reliefs.create.success')
     else
-      flash.now[:alert] = t('stress_reliefs.create.failure')
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,8 +32,7 @@ class StressReliefsController < ApplicationController
     if @stress_relief.update(stress_relief_params)
       redirect_to stress_relief_path(@stress_relief), notice: t('stress_reliefs.update.success')
     else
-      flash.now[:alert] = t('stress_reliefs.update.failure')
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
