@@ -8,6 +8,17 @@
     <%= link_to t('stress_records.index.new_stress_record'), new_stress_record_path, class: "rounded-lg py-3 px-5 mt-4 bg-sky-500 hover:bg-sky-400 text-white block font-medium" %>
   </div>
 
+  <%= form_with url: stress_records_path, method: :get do |f| %>
+    <%= f.select :year, options_for_select((StressRecord::START_YEAR..Time.zone.now.year).to_a.reverse, selected: params[:year] || Time.zone.now.year), {}, class: "form-select inline-block" %>
+    <%= f.select :month, options_for_select((StressRecord::MONTH_RANGE).to_a, selected: params[:month] || Time.zone.now.month), {}, class: "form-select inline-block" %>
+    
+    <% if @range == "week" %>
+      <%= f.select :week_number, options_for_select((StressRecord::FIRST_WEEK_NUMBER..@weeks.length).map { |i| [t('stress_records.index.nth_week', week_number: i), i] }, selected: params[:week_number] || @week_number), {}, class: "form-select inline-block" %>
+    <% end %>
+    
+    <%= f.submit t('defaults.search_button'), class: "inline-block rounded-lg py-3 px-5 mt-4 bg-green-500 hover:bg-green-400 text-white font-medium" %>
+  <% end %>
+
   <div class="my-5 max-w-5xl mx-auto">
     <div class="border p-4 rounded relative backdrop-blur-md bg-opacity-85 bg-white">
       <select class="select select-bordered bg-white w-auto max-w-sm absolute top-0 left-0 z-10" data-controller="records-chart" data-action="change->records-chart#changeRange">
@@ -15,34 +26,14 @@
         <option value="month" <%= @range == "month" ? 'selected' : '' %>><%= t('stress_records.index.monthly') %></option>
       </select>
       <h2 class="font-bold text-2xl mb-4 text-center"><%= t('stress_records.index.stress_level_fluctuation') %></h2>
+      <% if @range == "week" && @week_number.present? %>
+        <p class="text-center mb-4"><%= t('stress_records.index.nth_week', week_number: @week_number) %>: <%= @weeks[@week_number - 1][:start].strftime('%Y-%m-%d') %> 〜 <%= @weeks[@week_number - 1][:end].strftime('%Y-%m-%d') %></p>
+      <% end %>
       <%= line_chart @data, height: "400px", library: {title: "Before Stress Level"} %>
     </div>
   </div>
 
-  <div class="my-5 max-w-5xl mx-auto">
-    <table class="min-w-full bg-white rounded-lg overflow-hidden">
-      <thead class="bg-gray-200">
-        <tr>
-          <th class="py-2 px-4 text-left w-32"><%= t('stress_records.index.stress_relief_date') %></th>
-          <th class="py-2 px-4 text-left"><%= t('stress_records.index.title_stress_relief') %></th>
-          <th class="py-2 px-4 text-left"><%= t('stress_records.index.before') %></th>
-          <th class="py-2 px-4 text-left"><%= t('stress_records.index.after') %></th>
-          <th class="py-2 px-4"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @stress_records.each do |stress_record| %>
-          <tr class="hover:bg-gray-50 transition-colors duration-200 border">
-            <td class="py-2 px-4 w-32 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.stress_relief_date.to_date %></td>
-            <td class="py-2 px-4 break-all cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.title %></td>
-            <td class="py-2 px-4 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.before_stress_level %></td>
-            <td class="py-2 px-4 cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'"><%= stress_record.after_stress_level %></td>
-            <td class="py-2 px-4 flex justify-end">
-              <%= link_to t('defaults.destroy'), stress_record_path(stress_record), method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_message') }, class: "btn btn-ghost ml-2 bg-red-500 hover:bg-red-400 text-white" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div id="stress-records-table">
+    <%= render 'stress_records/stress_records_table', stress_records: @sorted_stress_records %>
   </div>
 </div>
