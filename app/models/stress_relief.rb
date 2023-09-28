@@ -11,10 +11,8 @@ class StressRelief < ApplicationRecord
 
   # 難易度の初期値
   DEFAULT_DIFFICULTY = 1
-
   # 難易度の最小値
   MIN_DIFFICULTY = 1
-
   # 難易度の最大値
   MAX_DIFFICULTY = 3
 
