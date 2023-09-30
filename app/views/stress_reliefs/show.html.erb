@@ -40,9 +40,10 @@
     </div>
   </div>
 
-  <div class="mt-5 flex justify-between items-end">
+  <div class="mt-5 flex justify-start items-end">
     <%= render 'like_link', stress_relief: @stress_relief %>
-    <div>
+    <%= link_to "𝕏", "https://twitter.com/share?url=#{CGI.escape(request.original_url)}&text=#{CGI.escape("オススメのストレス解消法は: #{@stress_relief.title}")}", target: "_blank", class: "text-2xl text-white bg-black px-1.5 py-1.0 rounded-none hover:bg-gray-700" %>
+    <div class="ml-auto">
       <label class="block text-lg font-medium mb-2"><%= User.human_attribute_name(:name) %></label>
       <p class="text-xl"><%= @stress_relief.user.name %></p>
     </div>
