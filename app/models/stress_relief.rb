@@ -23,7 +23,7 @@ class StressRelief < ApplicationRecord
 
   # タグ名をカンマで分割して、データベースに存在しない場合は新しくタグを作成する。
   def tag_names=(names)
-    self.tags = names.split(',').map do |name|
+    self.tags = names.split(',').uniq.map do |name|
       Tag.where(name: name.strip).first_or_create!
     end
   end

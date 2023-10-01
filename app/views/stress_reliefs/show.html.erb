@@ -22,8 +22,8 @@
 
   <div class="my-5">
     <label class="block text-lg font-medium mb-2"><%= StressRelief.human_attribute_name(:detail) %></label>
-    <div class="block w-full px-3 py-2 border-2 border-gray-400 rounded-md bg-gray-200 text-xl break-all">
-      <%= @stress_relief.detail %>
+    <div class="block w-full px-3 py-2 border-2 border-gray-400 rounded-md bg-gray-200 text-xl break-all h-[100px]">
+      <%= simple_format @stress_relief.detail %>
     </div>
   </div>
 
