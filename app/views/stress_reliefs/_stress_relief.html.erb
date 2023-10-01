@@ -3,10 +3,15 @@
   <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.jpg" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
   
   <div class="flex justify-between items-center mb-2">
-    <div class="text-xl">
+    <div class="text-xl flex flex-col items-center">
+      <p class="mb-1 text-base"><%= t('activerecord.attributes.stress_relief.difficulty') %></p>
       <%= render 'difficulty_stars', difficulty: stress_relief.difficulty %>
     </div>
-    <p class="text-xl break-all"><%= stress_relief.tag_names.join(', ') %></p>
+    <div class="flex flex-wrap">
+      <% stress_relief.tag_names.each do |tag_name| %>
+        <span class="bg-green-200 text-gray-800 rounded-md px-2 py-1 text-sm mr-2 mb-2"><%= tag_name %></span>
+      <% end %>
+    </div>
   </div>
   <div class="flex justify-between items-center mt-4">
     <div class="flex items-center text-pink-500">
