@@ -5,7 +5,7 @@ module ApplicationHelper
       title: 'オススメのストレス解消法の共有と記録サービス',
       reverse: true,
       charset: 'utf-8',
-      description: 'RecordSRMで、オススメのストレス解消法を共有・実施し、自己の方法も記録。効果を数値で確認し、新しい解消法の発見と効果的なストレス対策をサポートします。',
+      description: 'オススメのストレス解消法を実践・記録し、その効果をRecordSRMでチェック!',
       keywords: 'ストレス,ストレス解消,ストレスマネージメント',
       canonical: request.original_url,
       separator: '|',

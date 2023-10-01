@@ -1,5 +1,5 @@
 class StressReliefsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_stress_relief, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
@@ -44,11 +44,14 @@ class StressReliefsController < ApplicationController
   private
 
     def set_stress_relief
-      if action_name == 'edit'
-        @stress_relief = StressRelief.preload(:tags).find(params[:id])
-      else
-        @stress_relief = StressRelief.preload(:user, :likes, :tags).find(params[:id])
-      end
+      preload_associations = [:tags]
+      @stress_relief = if action_name == 'edit'
+                        StressRelief.preload(*preload_associations).find(params[:id])
+                      elsif user_signed_in?
+                        StressRelief.preload(:user, :likes, *preload_associations).find(params[:id])
+                      else
+                        StressRelief.preload(:user, *preload_associations).find(params[:id])
+                      end
     end
 
     def ensure_correct_user

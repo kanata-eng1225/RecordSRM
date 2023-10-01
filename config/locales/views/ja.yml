@@ -12,6 +12,9 @@ ja:
     destroy: "削除"
     delete_message: "本当に削除しますか？"
     search_button: "検索"
+    like: "いいね！"
+    share: "シェア"
+    share_text: "オススメのストレス解消法は: %{title}"
   layouts:
     header:
       recommended_stress_relief: "オススメのストレス解消法"
