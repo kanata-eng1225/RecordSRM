@@ -2,6 +2,8 @@ class StressRecord < ApplicationRecord
   belongs_to :user
 
   validates :performed, inclusion: { in: [true, false] }
+  validates :stress_relief_date, :before_stress_level, :after_stress_level, presence: true
+  validates :title, length: { maximum: 255 }
 
   # ストレスレベルの最小値
   STRESS_LEVEL_MIN = 0

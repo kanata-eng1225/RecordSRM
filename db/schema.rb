@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_132828) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_070308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,12 +29,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_132828) do
     t.datetime "stress_relief_date", null: false
     t.string "title"
     t.text "detail"
-    t.integer "before_stress_level"
-    t.integer "after_stress_level"
+    t.integer "before_stress_level", null: false
+    t.integer "after_stress_level", null: false
     t.text "impression"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "performed"
+    t.boolean "performed", default: false, null: false
     t.index ["user_id"], name: "index_stress_records_on_user_id"
   end
 
