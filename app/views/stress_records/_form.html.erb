@@ -12,7 +12,8 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :stress_relief_date %>
+    <%= form.label :stress_relief_date, class: "inline-block" %>
+    <span class="text-red-500">*</span>
     <%= form.date_field :stress_relief_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/5" %>
   </div>
 
