@@ -41,6 +41,11 @@
     <%= form.text_area :impression, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <div class="my-12 flex items-center justify-center">
+    <%= form.check_box :performed, class: "checkbox mr-2" %>
+    <%= form.label :performed, class: "font-medium" %>
+  </div>
+
   <div class="inline">
     <%= form.submit stress_record.new_record? ? t('defaults.create') : t('defaults.update'), class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white inline-block font-medium cursor-pointer" %>
   </div>

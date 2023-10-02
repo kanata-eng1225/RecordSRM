@@ -42,8 +42,8 @@ class StressRecordsController < ApplicationController
       start_date = @weeks[@week_number - 1][:start].beginning_of_day
       end_date = @weeks[@week_number - 1][:end].end_of_day
     else # 表示範囲が月の場合の処理
-      start_date = first_day_of_month
-      end_date = last_day_of_month
+      start_date = first_day_of_month.beginning_of_day
+      end_date = last_day_of_month.end_of_day
     end
 
     # 選択された範囲のストレスレコードを取得
@@ -51,7 +51,7 @@ class StressRecordsController < ApplicationController
     @sorted_stress_records = @stress_records.order(stress_relief_date: :asc)
 
     # グラフデータの取得
-    @data = StressRecord.get_data_for_range(@stress_records, @range, start_date)
+    @data = StressRecord.get_data_for_range(@stress_records.where(performed: true), @range, start_date)
   end
 
   def show
@@ -69,7 +69,7 @@ class StressRecordsController < ApplicationController
     @stress_record = current_user.stress_records.new(stress_record_params)
 
     if @stress_record.save
-      redirect_to stress_records_path, notice: t('stress_records.create.success')
+      redirect_to stress_record_path(@stress_record), notice: t('stress_records.create.success')
     else
       flash.now[:alert] = t('stress_records.create.error')
       render :new, status: :unprocessable_entity
@@ -78,7 +78,7 @@ class StressRecordsController < ApplicationController
 
   def update
     if @stress_record.update(stress_record_params)
-      redirect_to stress_records_path, notice: t('stress_records.update.success')
+      redirect_to stress_record_path(@stress_record), notice: t('stress_records.update.success')
     else
       flash.now[:alert] = t('stress_records.update.error')
       render :edit, status: :unprocessable_entity
@@ -97,6 +97,6 @@ class StressRecordsController < ApplicationController
     end
 
     def stress_record_params
-      params.require(:stress_record).permit(:stress_relief_date, :title, :detail, :before_stress_level, :after_stress_level, :impression)
+      params.require(:stress_record).permit(:stress_relief_date, :title, :detail, :before_stress_level, :after_stress_level, :impression, :performed)
     end
 end

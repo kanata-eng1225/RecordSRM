@@ -44,9 +44,11 @@ ja:
       weekly: "週間"
       monthly: "月間"
       stress_relief_date: "解消日"
+      performed: "実施/未実施"
       title_stress_relief: "ストレス解消法"
-      before: "実施前のレベル"
-      after: "実施後のレベル"
+      stress_level: "ストレスレベル"
+      before: "実施前"
+      after: "実施後"
       nth_week: "第%{week_number}週"
     show:
       title: "記録詳細"
