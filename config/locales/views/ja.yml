@@ -14,7 +14,8 @@ ja:
     search_button: "検索"
     like: "いいね！"
     share: "シェア"
-    share_text: "オススメのストレス解消法は: %{title}"
+    share_text: "オススメのストレス解消法: %{title}"
+    hashtags: "#ストレス解消 #ストレスマネージメント #RecordSRM"
   layouts:
     header:
       recommended_stress_relief: "オススメのストレス解消法"
