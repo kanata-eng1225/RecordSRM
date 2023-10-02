@@ -1,6 +1,8 @@
 class StressRecord < ApplicationRecord
   belongs_to :user
 
+  validates :performed, inclusion: { in: [true, false] }
+
   # ストレスレベルの最小値
   STRESS_LEVEL_MIN = 0
   # ストレスレベルの最大値

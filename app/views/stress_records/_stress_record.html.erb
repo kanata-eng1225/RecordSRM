@@ -52,4 +52,9 @@
       <%= simple_format stress_record.impression %>
     </div>
   </div>
+
+  <div class="my-12 flex items-center justify-center">
+    <input type="checkbox" <%= 'checked' if stress_record.performed %> disabled class="checkbox mr-2" />
+    <strong class="font-medium"><%= t('activerecord.attributes.stress_record.performed') %></strong>
+  </div>
 </div>
