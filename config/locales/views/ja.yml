@@ -30,6 +30,7 @@ ja:
     form:
       errors: "%{count}件のエラーが発生しました。"
       perform_stress_relief: "あなたが感じているストレスの度合いを、主観で判断してください。"
+      select_from_recommendations: "オススメのストレス解消法から選択"
     stress_slider:
       before_stress_level: "ストレス解消前のレベル"
       after_stress_level: "ストレス解消後のレベル"
@@ -88,6 +89,8 @@ ja:
     destroy:
       success: "オススメのストレス解消法が正常に削除されました。"
     unauthorized: "権限がありません。"
+  modal:
+    close: "閉じる"
   home:
     index:
       recommended_stress_relief: "オススメのストレス解消法の共有と"

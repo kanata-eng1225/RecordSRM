@@ -6,14 +6,14 @@
 
   <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.title') %></strong>
-    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words mb-10 h-[40px]">
+    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words mb-10 min-h-[40px] overflow-y-auto">
       <%= simple_format stress_record.title %>
     </div>
   </div>
 
   <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.detail') %></strong>
-    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words mb-10 h-[100px]">
+    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words mb-10 min-h-[100px] overflow-y-auto">
       <%= simple_format stress_record.detail %>
     </div>
   </div>
@@ -50,7 +50,7 @@
 
   <div class="my-5">
     <strong class="block font-medium mb-1"><%= t('activerecord.attributes.stress_record.impression') %></strong>
-    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words h-[100px]">
+    <div class="border border-gray-400 bg-gray-200 rounded-md p-2 w-[768px] break-words min-h-[100px] overflow-y-auto">
       <%= simple_format stress_record.impression %>
     </div>
   </div>
