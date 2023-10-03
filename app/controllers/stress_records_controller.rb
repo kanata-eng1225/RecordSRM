@@ -60,9 +60,11 @@ class StressRecordsController < ApplicationController
   def new
     @stress_record = StressRecord.new
     @stress_record.stress_relief_date = Time.zone.today
+    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
   def edit
+    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
   def create
