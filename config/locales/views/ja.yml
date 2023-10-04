@@ -70,7 +70,7 @@ ja:
       errors: "%{count}件のエラーが発生しました。"
       submit: "作成"
       placeholders:
-        tag_names: "複数のタグを指定する場合は、カンマ(,)で区切ってください。"
+        tag_names: "30文字以内にしてください。複数のタグを指定する場合は、カンマ(,)で区切ってください。"
     edit:
       title: "オススメのストレス解消法の編集"
       show_stress_relief: "キャンセル"

@@ -1,10 +1,4 @@
 class StressRecord < ApplicationRecord
-  belongs_to :user
-
-  validates :performed, inclusion: { in: [true, false] }
-  validates :stress_relief_date, :before_stress_level, :after_stress_level, presence: true
-  validates :title, length: { maximum: 255 }
-
   # ストレスレベルの最小値
   STRESS_LEVEL_MIN = 0
   # ストレスレベルの最大値
@@ -18,6 +12,14 @@ class StressRecord < ApplicationRecord
   MONTH_RANGE = 1..12
   # 最初の週
   FIRST_WEEK_NUMBER = 1
+
+  belongs_to :user
+
+  validates :performed, inclusion: { in: [true, false] }
+  validates :stress_relief_date, :before_stress_level, :after_stress_level, presence: true
+  validates :before_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
+  validates :after_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
+  validates :title, length: { maximum: 255 }
 
   # 指定された範囲のデータを取得する
   def self.get_data_for_range(records, range, start_date)

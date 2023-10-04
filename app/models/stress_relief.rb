@@ -1,4 +1,11 @@
 class StressRelief < ApplicationRecord
+  # 難易度の初期値
+  DEFAULT_DIFFICULTY = 1
+  # 難易度の最小値
+  MIN_DIFFICULTY = 1
+  # 難易度の最大値
+  MAX_DIFFICULTY = 3
+
   belongs_to :user
   has_many :stress_relief_tags, dependent: :destroy
   has_many :tags, through: :stress_relief_tags
@@ -8,13 +15,7 @@ class StressRelief < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
   validates :detail, presence: true
   validates :difficulty, presence: true
-
-  # 難易度の初期値
-  DEFAULT_DIFFICULTY = 1
-  # 難易度の最小値
-  MIN_DIFFICULTY = 1
-  # 難易度の最大値
-  MAX_DIFFICULTY = 3
+  validates :difficulty, inclusion: { in: MIN_DIFFICULTY..MAX_DIFFICULTY }
 
   # タグ名を配列にする。
   def tag_names
@@ -24,7 +25,7 @@ class StressRelief < ApplicationRecord
   # タグ名をカンマで分割して、データベースに存在しない場合は新しくタグを作成する。
   def tag_names=(names)
     self.tags = names.split(',').uniq.map do |name|
-      Tag.where(name: name.strip).first_or_create!
+      Tag.where(name: name.strip).first_or_initialize
     end
   end
 

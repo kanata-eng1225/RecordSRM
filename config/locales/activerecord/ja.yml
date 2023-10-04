@@ -10,9 +10,10 @@ ja:
         before_stress_level: "ストレス解消前のストレスレベル"
         after_stress_level: "ストレス解消後のストレスレベル"
         impression: "所感"
-        performed: "ストレス解消法を実施後、✔︎してください。これにより、ストレスレベルが計算されます。"
+        performed: "ストレス解消法を実施後、✔︎してください。ストレスレベルが計算されます。"
       stress_relief:
         title: "タイトル"
         detail: "詳細"
         difficulty: "難易度"
         tag_names: "タグ"
+        tags: "タグ"
