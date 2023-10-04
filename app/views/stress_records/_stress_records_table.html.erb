@@ -28,8 +28,10 @@
           <td class="py-2 px-4 w-30 text-center cursor-pointer" onclick="location.href='<%= stress_record_path(stress_record) %>'">
             <%= stress_record.performed ? stress_record.after_stress_level : '-' %>
           </td>
-          <td class="py-2 px-4 flex justify-end">
-            <%= link_to t('defaults.destroy'), stress_record_path(stress_record), method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_message') }, class: "btn btn-ghost ml-2 bg-red-500 hover:bg-red-400 text-white" %>
+          <td class="py-2 px-4 text-right" style="vertical-align: middle;">
+            <%= link_to stress_record_path(stress_record), method: :delete, data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_message') }, class: "p-1 bg-transparent hover:bg-red-100 rounded transition-colors duration-200 flex items-center justify-center" do %>
+              <%= image_tag 'rubbish.png', alt: 'Delete', class: 'w-5 h-5' %>
+            <% end %>
           </td>
         </tr>
       <% end %>
