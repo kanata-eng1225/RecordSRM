@@ -21,21 +21,48 @@ class StressRecord < ApplicationRecord
   validates :after_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
   validates :title, length: { maximum: 255 }
 
-  # 指定された範囲のデータを取得する
+  # 指定の日付範囲のストレスレベルのデータを取得
   def self.get_data_for_range(records, range, start_date)
-    # 最新のストレス解消日を取得、または開始日を使用
+    # 最新のストレス解消日を取得するか、存在しない場合は指定の開始日を使用
     latest_date = records.maximum(:stress_relief_date) || start_date
 
-    # 表示範囲の開始日を計算
+    # 表示範囲が週か月によって開始日を計算
     range_start_date = if range == 'week'
                          start_date
                        else
                          start_date.beginning_of_month
                        end
 
-    # 指定された範囲のストレスレコードを日ごとにグループ化し、ストレスレベルの差を合計
+    # 指定の範囲内で、日ごとのストレスレベルの変動を計算
     records.where(stress_relief_date: range_start_date..latest_date)
            .group_by_day(:stress_relief_date, series: false)
            .sum('after_stress_level - before_stress_level')
+  end
+
+  # 指定の日付範囲のストレスレコードを取得
+  def self.records_for_date_range(user, start_date, end_date)
+    user.stress_records.where(stress_relief_date: start_date..end_date)
+  end
+
+  # 指定の年月の各週の開始日と終了日を計算
+  def self.calculate_weeks_for_month(year, month)
+    first_day_of_month = Date.new(year, month, 1)
+    last_day_of_month = first_day_of_month.end_of_month
+
+    weeks = []
+    start_day = first_day_of_month
+    # 指定の月内で各週の開始日と終了日をリストアップ
+    while start_day <= last_day_of_month
+      end_day = [start_day.end_of_week(:sunday), last_day_of_month].min
+      weeks << { start: start_day, end: end_day }
+      start_day = end_day + 1.day
+    end
+    weeks
+  end
+
+  # 現在の日付がどの週に該当するかを特定
+  def self.find_current_week_number(weeks, today)
+    index = weeks.find_index { |week| week[:start] <= today && week[:end] >= today }
+    index ? index + 1 : 1
   end
 end
