@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :stress_records
   resources :stress_reliefs do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
   end
   devise_for :users
   get 'home/index'

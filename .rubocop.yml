@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   TargetRubyVersion: 3.2.2
   TargetRailsVersion: 7.0.7
@@ -9,7 +7,28 @@ AllCops:
     - 'db/migrate/**/*'
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'Gemfile'
+    - 'tmp/**/*'
+    - 'config/environments/*'
+    - 'config/puma.rb'
+    - 'config/importmap.rb'
+    - 'config/boot.rb'
+    - 'config/application.rb'
+    - 'config/initializers/assets.rb'
+    - 'config/initializers/filter_parameter_logging.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/environment.rb'
+    - 'config.ru'
+    - 'test/**/*'
+    - 'Rakefile'
 
 require:
   - rubocop-performance
   - rubocop-rails
+
+# クラスにコメントを残さなくても良い
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
