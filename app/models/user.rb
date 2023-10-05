@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :stress_reliefs
-  has_many :stress_records
+  has_many :stress_reliefs, dependent: :destroy
+  has_many :stress_records, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_stress_reliefs, through: :likes, source: :stress_relief
 

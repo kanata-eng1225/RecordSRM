@@ -20,7 +20,6 @@ module ApplicationHelper
       },
       twitter: {
         card: 'summary_large_image',
-        # site: '@YourTwitterHandle',
         image: image_url('RecordSRM_OGP.jpg')
       }
     }

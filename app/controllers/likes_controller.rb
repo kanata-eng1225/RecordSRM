@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
   def create
-  @like = current_user.likes.build(stress_relief_id: params[:stress_relief_id])
-  @like.save
-  redirect_to stress_relief_path(params[:stress_relief_id])
+    @like = current_user.likes.build(stress_relief_id: params[:stress_relief_id])
+    @like.save
+    redirect_to stress_relief_path(params[:stress_relief_id])
   end
 
   def destroy
