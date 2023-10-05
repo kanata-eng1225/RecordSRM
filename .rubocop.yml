@@ -26,9 +26,12 @@ require:
   - rubocop-performance
   - rubocop-rails
 
-# クラスにコメントを残さなくても良い
 Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
