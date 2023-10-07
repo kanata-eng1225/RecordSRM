@@ -3,9 +3,10 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="font-bold text-4xl"><%= t('stress_reliefs.index.title') %></h1>
-    <%= link_to t('stress_reliefs.index.new_stress_relief'), new_stress_relief_path, class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white block font-medium" %>
+  <div class="mb-4">
+    <h1 class="font-bold text-4xl inline-block"><%= t('stress_reliefs.index.title') %></h1>
+    <%= link_to t('stress_reliefs.index.new_stress_relief'), new_stress_relief_path, class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white font-medium float-right" %>
+    <div class="clear-both"></div>
   </div>
 
   <div class="text-center mb-6">
@@ -13,7 +14,7 @@
     <button class="bg-blue-500 text-white rounded-md px-4 py-2 ml-2" disabled>検索</button>
   </div>
 
-  <div id="stress_reliefs" class="flex flex-wrap justify-between">
+  <div id="stress_reliefs" class="flex flex-wrap justify-center md:justify-between">
     <%= render @stress_reliefs %>
   </div>
 
