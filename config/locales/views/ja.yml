@@ -68,14 +68,14 @@ ja:
   stress_reliefs:
     form:
       errors: "%{count}件のエラーが発生しました。"
-      submit: "作成"
+      submit: "投稿"
       placeholders:
-        tag_names: "30文字以内にしてください。複数のタグを指定する場合は、カンマ(,)で区切ってください。"
+        tag_names: "30文字以内で、複数はカンマ(,)区切り"
     edit:
       title: "オススメのストレス解消法の編集"
       show_stress_relief: "キャンセル"
     index:
-      title: "オススメのストレス解消法の一覧"
+      title: "オススメのストレス解消法一覧"
       new_stress_relief: "新規作成"
     new:
       title: "オススメのストレス解消法は？"

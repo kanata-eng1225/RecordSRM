@@ -3,14 +3,15 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-start mb-6">
-    <h1 class="text-4xl font-bold"><%= t('stress_reliefs.show.title') %></h1>
+  <div class="mb-6">
+    <h1 class="text-4xl font-bold inline-block"><%= t('stress_reliefs.show.title') %></h1>
     <% if current_user == @stress_relief.user %>
-      <div class="flex space-x-4">
-        <%= link_to t('defaults.edit'), edit_stress_relief_path(@stress_relief), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 text-white inline-block font-medium mr-2" %>
+      <div class="flex space-x-4 float-right">
+        <%= link_to t('defaults.edit'), edit_stress_relief_path(@stress_relief), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 text-white inline-block font-medium" %>
         <%= link_to t('defaults.destroy'), stress_relief_path(@stress_relief), data: { turbo_method: 'delete', turbo_confirm: t('defaults.delete_message') }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
       </div>
     <% end %>
+    <div class="clear-both"></div>
   </div>
 
   <div class="my-5">
