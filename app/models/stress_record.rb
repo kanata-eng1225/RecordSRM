@@ -21,6 +21,8 @@ class StressRecord < ApplicationRecord
   validates :after_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
   validates :title, length: { maximum: 255 }
 
+  scope :for_date_range, ->(start_date, end_date) { where(stress_relief_date: start_date..end_date) }
+
   # 指定の日付範囲のストレスレベルのデータを取得
   def self.get_data_for_range(records, range, start_date)
     # 最新のストレス解消日を取得するか、存在しない場合は指定の開始日を使用
@@ -37,11 +39,6 @@ class StressRecord < ApplicationRecord
     records.where(stress_relief_date: range_start_date..latest_date)
            .group_by_day(:stress_relief_date, series: false)
            .sum('after_stress_level - before_stress_level')
-  end
-
-  # 指定の日付範囲のストレスレコードを取得
-  def self.records_for_date_range(user, start_date, end_date)
-    user.stress_records.where(stress_relief_date: start_date..end_date)
   end
 
   # 指定の年月の各週の開始日と終了日を計算

@@ -3,11 +3,12 @@ class StressRecordsController < ApplicationController
   before_action :set_stress_record, only: %i[show edit update destroy]
   before_action :set_date_params, only: [:index]
   before_action :set_range, only: [:index]
+  before_action :set_stress_reliefs, only: %i[new edit]
 
   def index
     set_weekly_or_monthly_dates
     # 選択した日付範囲に基づいて、ストレスレコードを取得
-    @stress_records = StressRecord.records_for_date_range(current_user, @start_date, @end_date)
+    @stress_records = current_user.stress_records.for_date_range(@start_date, @end_date)
     @sorted_stress_records = @stress_records.order(stress_relief_date: :asc)
     # グラフ表示のためのデータを取得
     @data = StressRecord.get_data_for_range(@stress_records.where(performed: true), @range, @start_date)
@@ -18,12 +19,9 @@ class StressRecordsController < ApplicationController
   def new
     @stress_record = StressRecord.new
     @stress_record.stress_relief_date = Time.zone.today
-    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
-  def edit
-    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
-  end
+  def edit; end
 
   def create
     @stress_record = current_user.stress_records.new(stress_record_params)
@@ -90,8 +88,12 @@ class StressRecordsController < ApplicationController
     @end_date = @start_date.end_of_month.end_of_day
   end
 
+  def set_stress_reliefs
+    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
+  end
+
   def set_stress_record
-    @stress_record = StressRecord.find(params[:id])
+    @stress_record = current_user.stress_records.find(params[:id])
   end
 
   def stress_record_params
