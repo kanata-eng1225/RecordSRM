@@ -14,8 +14,7 @@ class StressRelief < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :detail, presence: true
-  validates :difficulty, presence: true
-  validates :difficulty, inclusion: { in: MIN_DIFFICULTY..MAX_DIFFICULTY }
+  validates :difficulty, presence: true, inclusion: { in: MIN_DIFFICULTY..MAX_DIFFICULTY }
 
   # タグ名を配列にする。
   def tag_names
