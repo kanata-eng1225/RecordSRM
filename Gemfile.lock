@@ -231,6 +231,8 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-capybara (2.19.0)
+      rubocop (~> 1.41)
     rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
@@ -309,6 +311,7 @@ DEPENDENCIES
   rails (~> 7.0.7)
   rails-i18n
   rubocop
+  rubocop-capybara
   rubocop-performance
   rubocop-rails
   selenium-webdriver
