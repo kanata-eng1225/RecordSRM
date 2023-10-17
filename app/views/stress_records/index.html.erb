@@ -16,7 +16,7 @@
       <%= f.select :week_number, options_for_select((StressRecord::FIRST_WEEK_NUMBER..@weeks.length).map { |i| [t('stress_records.index.nth_week', week_number: i), i] }, selected: params[:week_number] || @week_number), {}, class: "form-select inline-block" %>
     <% end %>
     
-    <%= f.submit t('defaults.search_button'), class: "inline-block rounded-lg py-3 px-5 mt-4 bg-green-500 hover:bg-green-400 text-white font-medium" %>
+    <%= f.submit t('defaults.search_button'), class: "inline-block rounded-lg py-3 px-5 mt-4 bg-indigo-500 hover:bg-indigo-400 text-white font-medium" %>
   <% end %>
 
   <div class="my-5 max-w-5xl mx-auto relative bg-white p-4 rounded-lg">

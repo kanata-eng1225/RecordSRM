@@ -4,7 +4,15 @@ class StressReliefsController < ApplicationController
   before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
-    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
+    @stress_reliefs = if params[:query].present?
+                        StressRelief.preload(:user, :tags).where('title LIKE ?', "%#{params[:query]}%")
+                                    .order(created_at: :desc)
+                                    .page(params[:page])
+                      else
+                        StressRelief.preload(:user, :tags)
+                                    .order(created_at: :desc)
+                                    .page(params[:page])
+                      end
   end
 
   def show; end
@@ -37,6 +45,10 @@ class StressReliefsController < ApplicationController
   def destroy
     @stress_relief.destroy
     redirect_to stress_reliefs_path, notice: t('.success')
+  end
+
+  def search
+    @search_results = StressRelief.where('title LIKE ?', "%#{params[:query]}%").limit(5)
   end
 
   private

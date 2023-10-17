@@ -115,3 +115,5 @@ ja:
       last: "最後"
       previous: "前"
       next: "次"
+  search:
+    input_placeholder: "タイトル検索 (3文字以上で補完)"
