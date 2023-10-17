@@ -9,14 +9,18 @@ document.addEventListener("turbo:frame-load", function() {
 
 function openModal() {
   const modal = document.querySelector('[data-modal-target="modal"]');
-  modal.classList.remove("hidden"); // hiddenクラスを削除
-  document.body.style.overflow = 'hidden';
+  if (modal) { // modalの存在を確認
+    modal.classList.remove("hidden"); // hiddenクラスを削除
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function closeModal() {
   const modal = document.querySelector('[data-modal-target="modal"]');
-  modal.classList.add("hidden"); // hiddenクラスを追加
-  document.body.style.overflow = 'auto';
+  if (modal) { // modalの存在を確認
+    modal.classList.add("hidden"); // hiddenクラスを追加
+    document.body.style.overflow = 'auto';
+  }
 }
 
 function selectBoardItem(event) {
@@ -25,8 +29,13 @@ function selectBoardItem(event) {
   const titleInput = document.querySelector('input[name="stress_record[title]"]');
   const detailTextarea = document.querySelector('textarea[name="stress_record[detail]"]');
 
-  titleInput.value = title;
-  detailTextarea.value = detail;
+  if (titleInput) {  // titleInputの存在を確認
+    titleInput.value = title;
+  }
+
+  if (detailTextarea) {  // detailTextareaの存在を確認
+    detailTextarea.value = detail;
+  }
 
   closeModal();
 }

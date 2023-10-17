@@ -1,0 +1,7 @@
+<ul>
+<% results.each do |result| %>
+  <li class="w-full hover:bg-gray-300 truncate" data-result-title="<%= result.title %>"style="white-space: nowrap; overflow-x: hidden; text-overflow: ellipsis;">
+    <%= result.title %>
+  </li>
+<% end %>
+</ul>

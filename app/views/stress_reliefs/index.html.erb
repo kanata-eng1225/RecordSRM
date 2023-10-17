@@ -10,8 +10,15 @@
   </div>
 
   <div class="text-center mb-6">
-    <input type="text" class="border rounded-md p-2 w-64" placeholder="調整中" disabled>
-    <button class="bg-blue-500 text-white rounded-md px-4 py-2 ml-2" disabled>検索</button>
+    <form action="<%= stress_reliefs_path %>" method="get" data-turbo-action="replace" data-turbo-frame="stress_reliefs">
+        <div class="relative w-4/5 inline-block">
+            <input type="text" name="query" value="<%= params[:query] %>" data-autocomplete-input="stress_relief" placeholder="<%= t('search.input_placeholder') %>" class="border border-gray-300 p-2 rounded-md w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 box-sizing:border-box">
+            <div id="autocomplete-results" class="overflow-wrap break-word absolute top-full left-0 mt-2 w-full bg-white border border-gray-300 p-2 rounded-md shadow-sm divide-y divide-gray-300 hidden z-10 box-sizing:border-box overflow-y-auto"></div>
+        </div>
+        <button type="submit" class="inline-block ml-2 bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-opacity-50 box-sizing:border-box">
+          <%= t('defaults.search_button') %>
+        </button>
+    </form>
   </div>
 
   <div id="stress_reliefs" class="flex flex-wrap justify-center md:justify-between">

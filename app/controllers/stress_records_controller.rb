@@ -48,6 +48,10 @@ class StressRecordsController < ApplicationController
     redirect_to stress_records_url, notice: t('.success')
   end
 
+  def search
+    @search_results = StressRelief.where('title LIKE ?', "%#{params[:query]}%").limit(5)
+  end
+
   private
 
   def set_date_params
@@ -74,7 +78,7 @@ class StressRecordsController < ApplicationController
 
   def set_weekly_dates
     # ユーザーの入力から週番号を取得、存在しない場合は現在の日付が所属する週をデフォルト値として使用
-    @week_number = params[:week_number].to_i || StressRecord.find_current_week_number(@weeks, Time.zone.today)
+    determine_week_number
     # 週番号が1未満または総週数を超える場合は、週番号を1に設定
     @week_number = 1 if @week_number < 1 || @week_number > @weeks.length
     # 選択した週の開始日と終了日を特定
@@ -88,8 +92,21 @@ class StressRecordsController < ApplicationController
     @end_date = @start_date.end_of_month.end_of_day
   end
 
+  def determine_week_number
+    @week_number = if params[:week_number].present?
+                     params[:week_number].to_i
+                   else
+                     StressRecord.find_current_week_number(@weeks, Time.zone.today)
+                   end
+  end
+
   def set_stress_reliefs
-    @stress_reliefs = StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
+    @stress_reliefs = if params[:query].present?
+                        StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
+                                    .where('title LIKE ?', "%#{params[:query]}%")
+                      else
+                        StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
+                      end
   end
 
   def set_stress_record
