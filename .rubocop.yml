@@ -25,6 +25,7 @@ AllCops:
 require:
   - rubocop-performance
   - rubocop-rails
+  - rubocop-capybara
 
 Style/Documentation:
   Enabled: false
