@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   end
   devise_for :users
   get 'home/index'
+  get 'privacy_policy', to: 'home#privacy_policy', as: 'privacy_policy'
   root 'home#index'
 end
