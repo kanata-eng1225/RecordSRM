@@ -29,7 +29,7 @@
     </div>
 
     <p class="mt-4 text-sm text-center text-gray-600">
-      <%= t('devise.sessions.new.agreement_statement', terms_of_service_link: link_to(t('layouts.footer.terms_of_service'), "#", class: "text-gray-400 hover:underline"), privacy_policy_link: link_to(t('layouts.footer.privacy_policy'), "#", class: "text-gray-400 hover:underline")).html_safe %>
+      <%= t('devise.sessions.new.agreement_statement', terms_of_service_link: link_to(t('layouts.footer.terms_of_service'), "#", class: "text-gray-400 hover:underline"), privacy_policy_link: link_to(t('layouts.footer.privacy_policy'), privacy_policy_path, class: "text-gray-400 hover:underline")).html_safe %>
     </p>
   </div>
 </div>
