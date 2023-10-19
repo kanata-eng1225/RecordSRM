@@ -34,7 +34,12 @@ document.addEventListener('turbo:load', function () {
           return response.text();
         })
         .then(data => {
-          resultsElement.innerHTML = data;
+          while (resultsElement.firstChild) {
+            resultsElement.removeChild(resultsElement.firstChild);
+          }
+          const div = document.createElement('div');
+          div.innerHTML = data;
+          resultsElement.appendChild(div);
           resultsElement.classList.remove('hidden');
         })
         .catch(error => {
