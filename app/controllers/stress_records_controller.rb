@@ -29,6 +29,7 @@ class StressRecordsController < ApplicationController
     if @stress_record.save
       redirect_to stress_record_path(@stress_record), notice: t('.success')
     else
+      set_stress_reliefs
       flash.now[:alert] = t('.error')
       render :new, status: :unprocessable_entity
     end

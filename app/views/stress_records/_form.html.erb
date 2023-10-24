@@ -23,7 +23,7 @@
 
   <div class="my-5">
     <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, placeholder: t('stress_records.form.title_max_length'), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -59,7 +59,7 @@
 <div data-modal-target="modal" class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 hidden">
   <div class="bg-gray-100 rounded-lg p-5 w-4/5 h-5/6 overflow-y-auto">
     <div class="text-center mb-6">
-      <% form_action = action_name == "new" ? new_stress_record_path : edit_stress_record_path(@stress_record) %>
+      <% form_action = @stress_record.new_record? ? new_stress_record_path : edit_stress_record_path(@stress_record) %>
       <form action="<%= form_action %>" method="get" data-turbo-action="replace" data-turbo-frame="modal_content">
         <div class="relative w-4/5 inline-block">
           <input type="text" name="query" value="<%= params[:query] %>" data-autocomplete-input="stress_record" placeholder="<%= t('search.input_placeholder') %>" class="border border-gray-300 p-2 rounded-md w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 box-sizing:border-box">
