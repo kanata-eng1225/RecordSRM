@@ -19,7 +19,7 @@ class StressRecord < ApplicationRecord
   validates :stress_relief_date, :before_stress_level, :after_stress_level, presence: true
   validates :before_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
   validates :after_stress_level, inclusion: { in: STRESS_LEVEL_MIN..STRESS_LEVEL_MAX }
-  validates :title, length: { maximum: 255 }
+  validates :title, length: { maximum: 50 }
 
   scope :for_date_range, ->(start_date, end_date) { where(stress_relief_date: start_date..end_date) }
 

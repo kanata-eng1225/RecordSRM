@@ -28,6 +28,7 @@ ja:
       privacy_policy: "プライバシーポリシー"
   stress_records:
     form:
+      title_max_length: "50文字以内"
       errors: "%{count}件のエラーが発生しました。"
       perform_stress_relief: "あなたが感じているストレスの度合いを、主観で判断してください。"
       select_from_recommendations: "オススメのストレス解消法から選択"
@@ -67,6 +68,7 @@ ja:
       success: "記録が正常に削除されました。"
   stress_reliefs:
     form:
+      title_max_length: "50文字以内"
       errors: "%{count}件のエラーが発生しました。"
       submit: "投稿"
       placeholders:
