@@ -19,6 +19,8 @@ class StressRecordsController < ApplicationController
   def new
     @stress_record = StressRecord.new
     @stress_record.stress_relief_date = Time.zone.today
+    @stress_record.title = permitted_params[:title] if permitted_params[:title]
+    @stress_record.detail = permitted_params[:detail] if permitted_params[:detail]
   end
 
   def edit; end
@@ -108,6 +110,10 @@ class StressRecordsController < ApplicationController
                       else
                         StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
                       end
+  end
+
+  def permitted_params
+    params.permit(:title, :detail)
   end
 
   def set_stress_record

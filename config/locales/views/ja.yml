@@ -84,6 +84,8 @@ ja:
       back_to_stress_reliefs: "キャンセル"
     show:
       title: "オススメのストレス解消法の詳細"
+      try_this_method: "この解消法を試す"
+      try_this: "実際に試してみよう！"
     create:
       success: "オススメのストレス解消法が正常に作成されました。"
     update:
