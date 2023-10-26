@@ -51,6 +51,10 @@
           <%= link_to "𝕏", "https://twitter.com/share?url=#{CGI.escape(request.original_url)}&text=#{CGI.escape("#{t('defaults.share_text', title: @stress_relief.title)}")}%0A#{CGI.escape(t('defaults.hashtags'))}", target: "_blank", class: "text-2xl text-white bg-black px-1.5 py-1.0 rounded-none hover:bg-gray-700" %>
           <span class="text-black"><%= t('defaults.share') %></span>
         </div>
+        <div class="flex flex-col items-center">
+          <%= link_to t('stress_reliefs.show.try_this_method'), new_stress_record_path(title: @stress_relief.title, detail: @stress_relief.detail), class: "rounded-lg py-1 px-5 bg-blue-500 hover:bg-blue-400 text-white inline-block font-medium" %>
+          <span class="text-blue-500"><%= t('stress_reliefs.show.try_this') %></span>
+        </div>
     </div>
     <div class="flex flex-col items-end"> 
       <label class="block text-lg font-medium mb-2"><%= User.human_attribute_name(:name) %></label>

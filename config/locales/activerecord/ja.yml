@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       stress_record: "記録"
+      stress_relief: "オススメのストレス解消法"
+      tag: "タグ"
     attributes:
       stress_record:
         stress_relief_date: "ストレス解消日"
@@ -17,3 +19,11 @@ ja:
         difficulty: "難易度"
         tag_names: "タグ"
         tags: "タグ"
+      tag:
+        name: "名"
+    errors:
+      models:
+        stress_relief:
+          attributes:
+            base:
+              invalid_tags: "タグに不正な値が含まれています。タグを30文字以下にしてください。"
