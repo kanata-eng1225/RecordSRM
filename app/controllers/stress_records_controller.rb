@@ -19,8 +19,12 @@ class StressRecordsController < ApplicationController
   def new
     @stress_record = StressRecord.new
     @stress_record.stress_relief_date = Time.zone.today
-    @stress_record.title = permitted_params[:title] if permitted_params[:title]
-    @stress_record.detail = permitted_params[:detail] if permitted_params[:detail]
+
+    return unless permitted_params[:stress_relief_id]
+
+    stress_relief = StressRelief.find(permitted_params[:stress_relief_id])
+    @stress_record.title = stress_relief.title
+    @stress_record.detail = stress_relief.detail
   end
 
   def edit; end
@@ -113,7 +117,7 @@ class StressRecordsController < ApplicationController
   end
 
   def permitted_params
-    params.permit(:title, :detail)
+    params.permit(:stress_relief_id)
   end
 
   def set_stress_record

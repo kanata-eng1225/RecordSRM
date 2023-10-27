@@ -36,3 +36,6 @@ Style/FrozenStringLiteralComment:
 Metrics/MethodLength:
   Exclude:
     - 'app/helpers/application_helper.rb'
+
+Metrics/ClassLength:
+  Max: 120
