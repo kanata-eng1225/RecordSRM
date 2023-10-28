@@ -55,6 +55,7 @@ ja:
       nth_week: "第%{week_number}週"
     show:
       title: "記録詳細"
+      share_as_recommendation: "オススメの解消法として共有"
     new:
       title: "記録の作成"
       back_to_stress_records: "キャンセル"
@@ -120,4 +121,4 @@ ja:
       previous: "前"
       next: "次"
   search:
-    input_placeholder: "タイトル検索 (3文字以上補完)"
+    input_placeholder: "タイトル検索 (2文字以上補完)"
