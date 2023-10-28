@@ -1,6 +1,6 @@
 class StressRecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_stress_record, only: %i[show edit update destroy]
+  before_action :set_stress_record, only: %i[show edit update destroy set_session]
   before_action :set_date_params, only: [:index]
   before_action :set_range, only: [:index]
   before_action :set_stress_reliefs, only: %i[new edit]
@@ -59,6 +59,12 @@ class StressRecordsController < ApplicationController
     @search_results = StressRelief.where('title LIKE ?', "%#{params[:query]}%").limit(5)
   end
 
+  def set_session
+    session[:shared_title] = @stress_record.title
+    session[:shared_detail] = @stress_record.detail
+    redirect_to new_stress_relief_path
+  end
+
   private
 
   def set_date_params
@@ -71,7 +77,11 @@ class StressRecordsController < ApplicationController
 
   def set_range
     # 表示範囲（週または月）を取得し、セッションに保存
-    @range = params[:range] || session[:range] || 'week'
+    @range = if %w[week month].include?(params[:range])
+               params[:range]
+             else
+               session[:range] || 'week'
+             end
     session[:range] = @range
   end
 

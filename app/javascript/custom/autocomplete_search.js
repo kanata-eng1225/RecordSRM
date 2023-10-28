@@ -20,7 +20,7 @@ document.addEventListener('turbo:load', function () {
       const query = event.target.value;
       const endpoint = getEndpoint(query);
 
-      if (!endpoint || query.length < 3) {
+      if (!endpoint || query.length < 2) {
         resultsElement.classList.add('hidden');
         resultsElement.innerHTML = '';
         return;
@@ -66,7 +66,7 @@ window.executeSearchFunction = function(event) {
   const query = inputElement.value;
   const endpoint = getEndpoint(query);
 
-  if (endpoint && query.length >= 3) {
+  if (endpoint && query.length >= 2) {
     Turbo.visit(endpoint, { action: 'replace', target: 'modal_content' });
   }
 }

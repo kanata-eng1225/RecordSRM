@@ -20,6 +20,8 @@ class StressReliefsController < ApplicationController
   def new
     @stress_relief = StressRelief.new
     @stress_relief.difficulty ||= StressRelief::DEFAULT_DIFFICULTY
+    @stress_relief.title = session.delete(:shared_title)
+    @stress_relief.detail = session.delete(:shared_detail)
   end
 
   def edit; end
