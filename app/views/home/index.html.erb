@@ -1,6 +1,12 @@
-<% flash.each do |key, value| %>
-  <div class="<%= key == 'notice' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %> p-4 rounded-md">
-    <%= value %>
+<% if flash[:notice] %>
+  <div class="bg-green-100 text-green-800 p-4 rounded-md">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="bg-red-100 text-red-800 p-4 rounded-md">
+    <%= flash[:alert] %>
   </div>
 <% end %>
 

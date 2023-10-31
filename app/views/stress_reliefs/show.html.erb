@@ -3,6 +3,10 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
+  <% if flash[:alert] %>
+    <p class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert"><%= flash[:alert] %></p>
+  <% end %>
+
   <div class="mb-6">
     <h1 class="text-4xl font-bold inline-block"><%= t('stress_reliefs.show.title') %></h1>
     <% if current_user == @stress_relief.user %>
