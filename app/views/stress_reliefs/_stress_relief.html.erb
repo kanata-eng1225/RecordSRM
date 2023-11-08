@@ -1,23 +1,28 @@
-<%= link_to stress_relief_path(stress_relief), class: "board-item block border p-5 rounded-xl hover:scale-105 transform transition-transform duration-300 bg-white m-2 w-80 self-start", style: "min-height: 400px;" do %>
-  <h2 class="font-bold text-2xl mb-4 break-all"><%= stress_relief.title %></h2>
-  <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.webp" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
-  
-  <div class="flex justify-between items-center mb-2">
-    <div class="text-xl flex flex-col items-center">
-      <p class="mb-1 text-base"><%= t('activerecord.attributes.stress_relief.difficulty') %></p>
-      <%= render 'difficulty_stars', difficulty: stress_relief.difficulty %>
+<div class="board-item border p-5 rounded-xl bg-white m-2 w-80 self-start hover:scale-105 transform transition-transform duration-300" style="min-height: 400px;">
+  <%= link_to stress_relief_path(stress_relief), class: "block " do %>
+    <h2 class="font-bold text-2xl mb-4 break-all"><%= stress_relief.title %></h2>
+    <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.webp" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
+    
+    <div class="flex justify-between items-center mb-2">
+      <div class="text-xl flex flex-col items-center">
+        <p class="mb-1 text-base"><%= t('activerecord.attributes.stress_relief.difficulty') %></p>
+        <%= render 'difficulty_stars', difficulty: stress_relief.difficulty %>
+      </div>
+      <div class="flex flex-wrap">
+        <% stress_relief.tag_names.each do |tag_name| %>
+          <span class="bg-green-200 text-gray-800 rounded-md px-2 py-1 text-sm mr-2 mb-2"><%= tag_name %></span>
+        <% end %>
+      </div>
     </div>
-    <div class="flex flex-wrap">
-      <% stress_relief.tag_names.each do |tag_name| %>
-        <span class="bg-green-200 text-gray-800 rounded-md px-2 py-1 text-sm mr-2 mb-2"><%= tag_name %></span>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
   <div class="flex justify-between items-center mt-4">
-    <div class="flex items-center text-pink-500">
-      <%= render 'like_icon_outline' %>
-      <span class="ml-2"><%= stress_relief.likes.count %></span>
+    <%= turbo_frame_tag "like_#{stress_relief.id}" do %>
+      <div class="flex items-center text-pink-500">
+        <%= render 'like_link_index', stress_relief: stress_relief %>
+      </div>
+    <% end %>
+    <div>
+      <%= link_to stress_relief.user.name, stress_relief_path(stress_relief), class: "text-xl" %>
     </div>
-    <p class="text-xl"><%= stress_relief.user.name %></p>
   </div>
-<% end %>
+</div>
