@@ -18,11 +18,12 @@ ja:
     hashtags: "#ストレス解消 #ストレスマネージメント #RecordSRM"
   layouts:
     header:
-      recommended_stress_relief: "オススメのストレス解消法"
+      recommended_stress_relief: "ストレス解消法"
       ranking: "ランキング(調整中)"
       record: "記録"
       likes_list: "いいね一覧(調整中)"
       mypage: "マイページ(調整中)"
+      stress_nav: "ストレス解消ナビ(調整中)"
     footer:
       terms_of_service: "利用規約"
       privacy_policy: "プライバシーポリシー"
@@ -31,7 +32,7 @@ ja:
       title_max_length: "50文字以内"
       errors: "%{count}件のエラーが発生しました。"
       perform_stress_relief: "あなたが感じているストレスの度合いを、主観で判断してください。"
-      select_from_recommendations: "オススメのストレス解消法から選択"
+      select_from_recommendations: "ストレス解消法から選択"
     stress_slider:
       before_stress_level: "ストレス解消前"
       after_stress_level: "ストレス解消後"
@@ -80,24 +81,24 @@ ja:
       placeholders:
         tag_names: "30文字以内で、複数はカンマ(,)区切り"
     edit:
-      title: "オススメのストレス解消法の編集"
+      title: "ストレス解消法の編集"
       show_stress_relief: "キャンセル"
     index:
-      title: "オススメのストレス解消法一覧"
+      title: "ストレス解消法一覧"
       new_stress_relief: "新規作成"
     new:
       title: "オススメのストレス解消法は？"
       back_to_stress_reliefs: "キャンセル"
     show:
-      title: "オススメのストレス解消法の詳細"
+      title: "ストレス解消法の詳細"
       try_this_method: "解消法を試す"
       try_this: "効果を体感しよう！"
     create:
-      success: "オススメのストレス解消法が正常に作成されました。"
+      success: "ストレス解消法が正常に作成されました。"
     update:
-      success: "オススメのストレス解消法が正常に更新されました。"
+      success: "ストレス解消法が正常に更新されました。"
     destroy:
-      success: "オススメのストレス解消法が正常に削除されました。"
+      success: "ストレス解消法が正常に削除されました。"
     unauthorized: "権限がありません。"
   modal:
     close: "閉じる"
@@ -107,7 +108,7 @@ ja:
       record_effect: "その効果を記録しませんか？"
       new_life_step: "新しい日常の一歩を"
       start_here: "ここから"
-      view_stress_reliefs: "オススメのストレス解消法一覧へ"
+      view_stress_reliefs: "ストレス解消法一覧へ"
       what_is_recordsrm: "RecordSRMとは？"
       recordsrm_description: "オススメのストレス解消法（Stress Relief Method:SRM）を共有でき、共有されている方法や自分で見つけた方法を実際に試して、その結果を記録できるサービスです。"
       service_concept: "サービスコンセプト"

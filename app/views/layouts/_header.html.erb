@@ -6,7 +6,6 @@
     <div class="navbar-end flex-grow space-x-2 flex items-center justify-end flex-wrap">
       <div class="hidden sm:flex space-x-2">
         <%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path, class: "btn btn-ghost normal-case text-sm sm:text-base lg:text-lg xl:text-xl" %>
-        <a href="#" class="btn btn-ghost normal-case text-sm sm:text-base lg:text-lg xl:text-xl"><%= t('layouts.header.ranking') %></a>
       </div>
       <div class="dropdown ml-auto">
         <label tabindex="0" class="btn btn-ghost btn-circle">
@@ -14,11 +13,9 @@
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 origin-top-right right-0">
           <li class="sm:hidden"><%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path %></li>
-          <li class="sm:hidden"><%= link_to t('layouts.header.ranking'), "#" %></li>
           <% if user_signed_in? %>
             <li><%= link_to t('layouts.header.record'), stress_records_path %></li>
-            <li><%= link_to t('layouts.header.likes_list'), "#" %></li>
-            <li><%= link_to t('layouts.header.mypage'), "#" %></li>
+            <li><%= link_to t('layouts.header.stress_nav'), "#" %></li>
             <li><%= link_to t('defaults.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_message') } %></li>
           <% else %>
             <li><%= link_to t('defaults.login'), new_user_session_path %></li>
