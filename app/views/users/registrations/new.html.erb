@@ -8,13 +8,13 @@
       <div>
         <%= f.label :name, class: "block text-sm font-medium text-gray-600 inline-block" %>
         <span class="text-red-500">*</span>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-600" %>
       </div>
 
       <div>
         <%= f.label :email, class: "block text-sm font-medium text-gray-600 inline-block" %>
         <span class="text-red-500">*</span>
-        <%= f.email_field :email, autocomplete: "email", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
+        <%= f.email_field :email, autocomplete: "email", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-600" %>
       </div>
 
       <div>
@@ -23,22 +23,22 @@
         <em class="text-xs text-gray-500">(<%= @minimum_password_length %> <%= t('devise.registrations.new.characters_minimum') %>)</em>
         <% end %>
         <span class="text-red-500">*</span>
-        <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-600" %>
       </div>
 
       <div>
         <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-600 inline-block" %>
         <span class="text-red-500">*</span>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-500" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 p-2 w-full border rounded-md focus:border-emerald-600" %>
       </div>
 
       <div>
-        <%= f.submit t('devise.registrations.new.sign_up'), class: "w-full p-2 text-white bg-emerald-500 rounded-md hover:bg-emerald-400" %>
+        <%= f.submit t('devise.registrations.new.sign_up'), class: "w-full p-2 text-white bg-emerald-600 rounded-md hover:bg-emerald-500" %>
       </div>
     <% end %>
 
     <div class="mt-4 text-center">
-      <%= link_to t('devise.registrations.new.already_have_account'), new_session_path(resource_name), class: "text-sky-500 hover:underline" %>
+      <%= link_to t('devise.registrations.new.already_have_account'), new_session_path(resource_name), class: "text-blue-800 hover:underline" %>
     </div>
   </div>
 </div>

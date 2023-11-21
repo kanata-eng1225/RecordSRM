@@ -11,21 +11,21 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
       <div>
         <%= f.label :email, class: "block text-sm font-medium text-gray-600" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 p-2 w-full border rounded-md focus:border-sky-500" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 p-2 w-full border rounded-md focus:border-blue-800" %>
       </div>
 
       <div>
         <%= f.label :password, class: "block text-sm font-medium text-gray-600" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "mt-1 p-2 w-full border rounded-md focus:border-sky-500" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "mt-1 p-2 w-full border rounded-md focus:border-blue-800" %>
       </div>
 
       <div>
-        <%= f.submit t('devise.sessions.new.sign_in'), class: "w-full p-2 text-white bg-sky-500 text-white rounded-md hover:bg-sky-400" %>
+        <%= f.submit t('devise.sessions.new.sign_in'), class: "w-full p-2 text-white bg-blue-800 text-white rounded-md hover:bg-blue-700" %>
       </div>
     <% end %>
 
     <div class="mt-4 text-center">
-      <%= link_to t('devise.sessions.new.create_one'), new_user_registration_path, class: "text-emerald-500 hover:underline" %>
+      <%= link_to t('devise.sessions.new.create_one'), new_user_registration_path, class: "text-emerald-600 hover:underline" %>
     </div>
 
     <p class="mt-4 text-sm text-center text-gray-600">
