@@ -1,2 +1,2 @@
 <%# _page.html.erb %>
-<%= link_to page, url, remote: remote, rel: page.rel, class: "relative inline-flex items-center px-2 py-1 lg:px-4 lg:py-2 border text-sm font-medium rounded-md #{'bg-blue-500 text-white' if page.current?} #{'hover:bg-blue-200 hover:text-blue-600' unless page.current?}", aria_current: (page.current? ? 'page' : nil) %>
+<%= link_to page, url, remote: remote, rel: page.rel, class: "relative inline-flex items-center px-2 py-1 lg:px-4 lg:py-2 border text-sm font-medium rounded-md #{'bg-blue-700 text-white' if page.current?} #{'hover:bg-blue-300 hover:text-blue-800' unless page.current?}", aria_current: (page.current? ? 'page' : nil) %>

@@ -11,7 +11,7 @@
     <h1 class="text-4xl font-bold inline-block"><%= t('stress_reliefs.show.title') %></h1>
     <% if current_user == @stress_relief.user %>
       <div class="flex space-x-4 float-right">
-        <%= link_to t('defaults.edit'), edit_stress_relief_path(@stress_relief), class: "rounded-lg py-3 px-5 bg-emerald-400 hover:bg-emerald-300 text-white inline-block font-medium" %>
+        <%= link_to t('defaults.edit'), edit_stress_relief_path(@stress_relief), class: "rounded-lg py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white inline-block font-medium" %>
         <%= link_to t('defaults.destroy'), stress_relief_path(@stress_relief), data: { turbo_method: 'delete', turbo_confirm: t('defaults.delete_message') }, class: "rounded-lg py-3 px-5 bg-red-500 hover:bg-red-400 text-white font-medium" %>
       </div>
     <% end %>
@@ -60,8 +60,8 @@
           <span class="text-black"><%= t('defaults.share') %></span>
         </div>
         <div class="flex flex-col items-center">
-          <%= link_to t('stress_reliefs.show.try_this_method'), new_stress_record_path(stress_relief_id: @stress_relief.id), class: "rounded-lg py-1 px-5 bg-blue-500 hover:bg-blue-400 text-white inline-block font-medium" %>
-          <span class="text-blue-500"><%= t('stress_reliefs.show.try_this') %></span>
+          <%= link_to t('stress_reliefs.show.try_this_method'), new_stress_record_path(stress_relief_id: @stress_relief.id), class: "rounded-lg py-1 px-5 bg-blue-800 hover:bg-blue-700 text-white inline-block font-medium" %>
+          <span class="text-blue-800"><%= t('stress_reliefs.show.try_this') %></span>
         </div>
     </div>
   </div>

@@ -18,7 +18,7 @@
   </div>
 
   <div class="my-5 text-center">
-    <button type="button" data-action="open-modal" class="bg-blue-500 hover:bg-blue-400 text-white rounded-md px-4 py-2"><%= t('stress_records.form.select_from_recommendations') %></button>
+    <button type="button" data-action="open-modal" class="bg-blue-800 hover:bg-blue-700 text-white rounded-md px-4 py-2"><%= t('stress_records.form.select_from_recommendations') %></button>
   </div>
 
   <div class="my-5">
@@ -68,7 +68,7 @@
   </div>
 
   <div class="inline">
-    <%= form.submit stress_record.new_record? ? t('defaults.create') : t('defaults.update'), class: "rounded-lg py-3 px-5 bg-sky-500 hover:bg-sky-400 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit stress_record.new_record? ? t('defaults.create') : t('defaults.update'), class: "rounded-lg py-3 px-5 bg-blue-800 hover:bg-blue-700 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
 
@@ -78,10 +78,10 @@
       <% form_action = @stress_record.new_record? ? new_stress_record_path : edit_stress_record_path(@stress_record) %>
       <form action="<%= form_action %>" method="get" data-turbo-action="replace" data-turbo-frame="modal_content">
         <div class="relative w-4/5 inline-block">
-          <input type="text" name="query" value="<%= params[:query] %>" data-autocomplete-input="stress_record" placeholder="<%= t('search.input_placeholder') %>" class="border border-gray-300 p-2 rounded-md w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 box-sizing:border-box">
+          <input type="text" name="query" value="<%= params[:query] %>" data-autocomplete-input="stress_record" placeholder="<%= t('search.input_placeholder') %>" class="border border-gray-300 p-2 rounded-md w-full shadow-sm focus:ring-indigo-700 focus:border-indigo-700 box-sizing:border-box">
           <div id="autocomplete-results" class="overflow-wrap break-word absolute top-full left-0 mt-2 w-full bg-white border border-gray-300 p-2 rounded-md shadow-sm divide-y divide-gray-300 hidden z-50 box-sizing:border-box overflow-y-auto"></div>
         </div>
-        <button type="submit" class="inline-block ml-2 bg-indigo-500 text-white p-2 rounded-md hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 box-sizing:border-box">
+        <button type="submit" class="inline-block ml-2 bg-indigo-700 text-white p-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50 box-sizing:border-box">
           <%= t('defaults.search_button') %>
         </button>
       </form>

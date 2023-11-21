@@ -19,12 +19,12 @@
       <p class="text-lg md:text-2xl mb-10"><%= t('home.index.start_here') %></p>
       <% if user_signed_in? %>
         <div class="flex space-x-4">
-          <%= link_to t('home.index.view_stress_reliefs'), stress_reliefs_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-sky-500 text-white rounded hover:bg-sky-400" %>
+          <%= link_to t('home.index.view_stress_reliefs'), stress_reliefs_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-blue-800 text-white rounded hover:bg-blue-700" %>
         </div>
       <% else %>
         <div class="flex space-x-4">
-          <%= link_to t('defaults.login'), new_user_session_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-sky-500 text-white rounded hover:bg-sky-400" %>
-          <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-emerald-500 text-white rounded hover:bg-emerald-400" %>
+          <%= link_to t('defaults.login'), new_user_session_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-blue-800 text-white rounded hover:bg-blue-700" %>
+          <%= link_to t('defaults.sign_up'), new_user_registration_path, class: "py-1 sm:py-2 px-3 sm:px-4 bg-emerald-600 text-white rounded hover:bg-emerald-500" %>
         </div>
       <% end %>
     </div>
