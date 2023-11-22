@@ -1,22 +1,26 @@
-// スクロールイベントにリスナーを追加
-document.addEventListener('DOMContentLoaded', function() {
-  window.addEventListener('scroll', toggleScrollIndicator);
-  toggleScrollIndicator(); // 初期表示時の状態を設定
+document.addEventListener('turbo:load', function () {
+  // スクロールイベントのリスナーを追加
+  window.addEventListener('scroll', function() {
+    // 矢印の要素を取得
+    const scrollIndicator = document.getElementById('scroll-indicator');
+
+    // 矢印の要素が存在しない場合は処理をスキップ
+    if (!scrollIndicator) return;
+
+    // ドキュメントの高さ
+    const docHeight = document.documentElement.scrollHeight;
+    // ウィンドウの高さ
+    const winHeight = window.innerHeight;
+    // スクロールされた高さ
+    const scrolled = window.scrollY;
+
+    // スクロール位置が、ドキュメントの最下部に近づいたかどうかをチェック
+    if (scrolled + winHeight > docHeight - 50) {
+      // 矢印を隠す
+      scrollIndicator.style.display = 'none';
+    } else {
+      // それ以外の場合は矢印を表示
+      scrollIndicator.style.display = 'block';
+    }
+  });
 });
-
-function toggleScrollIndicator() {
-  const indicator = document.getElementById('scroll-indicator');
-  if (!indicator) return;
-
-  // ページの最下部に達しているかどうかをチェック
-  const bottomOfPage = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
-
-  // 最下部に達したら、アニメーションを停止する
-  if (bottomOfPage) {
-    indicator.classList.add('opacity-0');
-    indicator.classList.remove('animate-bounce');
-  } else {
-    indicator.classList.remove('opacity-0');
-    indicator.classList.add('animate-bounce');
-  }
-}
