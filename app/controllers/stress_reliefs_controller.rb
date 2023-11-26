@@ -5,13 +5,12 @@ class StressReliefsController < ApplicationController
 
   def index
     @stress_reliefs = if params[:query].present?
-                        StressRelief.preload(:user, :tags).where('title LIKE ?', "%#{params[:query]}%")
-                                    .order(created_at: :desc)
-                                    .page(params[:page])
+                        search_stress_reliefs
+                      elsif recommend_param?
+                        @stress_reliefs = StressRelief.recommended_stress_reliefs(current_user)
+                        render 'recommend' and return
                       else
-                        StressRelief.preload(:user, :tags)
-                                    .order(created_at: :desc)
-                                    .page(params[:page])
+                        default_stress_reliefs
                       end
   end
 
@@ -64,6 +63,19 @@ class StressReliefsController < ApplicationController
                      else
                        StressRelief.preload(:user, *preload_associations).find(params[:id])
                      end
+  end
+
+  def search_stress_reliefs
+    StressRelief.preload(:user, :tags).where('title LIKE ?', "%#{params[:query]}%")
+                .order(created_at: :desc).page(params[:page])
+  end
+
+  def recommend_param?
+    params[:recommend] == 'true' && user_signed_in?
+  end
+
+  def default_stress_reliefs
+    StressRelief.preload(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
   def ensure_correct_user

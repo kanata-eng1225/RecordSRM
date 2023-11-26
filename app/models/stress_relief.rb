@@ -6,6 +6,11 @@ class StressRelief < ApplicationRecord
   # 難易度の最大値
   MAX_DIFFICULTY = 3
 
+  # あなたへおすすめのストレス解消法の表示件数
+  MAX_RECOMMENDED_COUNT = 3
+  # いいねが多いストレス解消法を取得する上限の件数
+  TOP_STRESS_RELIEFS_LIMIT = 5
+
   belongs_to :user
   has_many :stress_relief_tags, dependent: :destroy
   has_many :tags, through: :stress_relief_tags
@@ -65,5 +70,34 @@ class StressRelief < ApplicationRecord
   # いいねのレコードを返す。
   def user_like(user)
     likes.find_by(user_id: user.id)
+  end
+
+  # おすすめのストレス解消法を取得する。
+  def self.recommended_stress_reliefs(user)
+    # ユーザーがいいねした投稿を取得
+    users_who_liked_my_posts = user.stress_reliefs.joins(:likes).pluck('likes.user_id').uniq
+
+    # それらの投稿からランダムに最大3件取得
+    stress_reliefs_from_liked_users = if users_who_liked_my_posts.present?
+                                        eager_load(:user, :tags, :likes)
+                                          .where(user_id: users_who_liked_my_posts).sample(MAX_RECOMMENDED_COUNT)
+                                      else
+                                        []
+                                      end
+
+    fill_top_stress_reliefs(stress_reliefs_from_liked_users)
+  end
+
+  # おすすめのリストが足りない場合、いいねが多い投稿を追加
+  def self.fill_top_stress_reliefs(stress_reliefs)
+    if stress_reliefs.size < MAX_RECOMMENDED_COUNT
+      top_stress_reliefs = left_joins(:likes)
+                           .group(:id)
+                           .order('COUNT(likes.id) DESC')
+                           .limit(TOP_STRESS_RELIEFS_LIMIT).sample(MAX_RECOMMENDED_COUNT - stress_reliefs.size)
+      stress_reliefs + where(id: top_stress_reliefs.map(&:id)).eager_load(:user, :tags, :likes)
+    else
+      stress_reliefs
+    end
   end
 end
