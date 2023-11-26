@@ -1,18 +1,18 @@
 <% if current_user %>
   <% if stress_relief.liked_by?(stress_relief.likes, current_user.id) %>
-    <%= link_to stress_relief_like_path(stress_relief, stress_relief.user_like(current_user)), method: :delete, data: { turbo_frame: "like_#{stress_relief.id}" }, class: "text-pink-500 hover:text-pink-300 transition duration-100 cursor-pointer mr-2 flex items-center", data: { turbo_method: "delete" } do %>
-      <%= render 'like_icon_filled' %>
+    <%= link_to stress_relief_like_path(stress_relief, stress_relief.user_like(current_user)), method: :delete, data: { turbo_frame: "like_#{stress_relief.id}", turbo_method: "delete" }, class: "text-pink-500 hover:text-pink-300 transition duration-100 cursor-pointer mr-2 flex items-center" do %>
+      <%= render 'likes/like_icon_filled' %>
       <span><%= stress_relief.likes.count %></span>
     <% end %>
   <% else %>
     <%= link_to stress_relief_likes_path(stress_relief), method: :post, data: { turbo_frame: "like_#{stress_relief.id}" }, class: "text-pink-500 hover:text-pink-300 transition duration-100 cursor-pointer mr-2 flex items-center", data: { turbo_method: "post" } do %>
-      <%= render 'like_icon_outline' %>
+      <%= render 'likes/like_icon_outline' %>
       <span><%= stress_relief.likes.count %></span>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path, class: "text-pink-500 hover:text-pink-300 transition duration-100 cursor-pointer mr-2 flex items-center", data: { turbo: false } do %>
-    <%= render 'like_icon_outline' %>
+    <%= render 'likes/like_icon_outline' %>
     <span><%= stress_relief.likes.count %></span>
   <% end %>
 <% end %>

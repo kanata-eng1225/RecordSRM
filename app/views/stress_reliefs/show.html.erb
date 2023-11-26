@@ -51,18 +51,20 @@
 
   <div class="mt-5 flex justify-between items-end space-x-4">
     <div class="flex space-x-4">
-        <div class="flex flex-col items-center">
-          <%= render 'like_link', stress_relief: @stress_relief %>
-          <span class="text-pink-500"><%= t('defaults.like') %></span>
-        </div>
-        <div class="flex flex-col items-center">
-          <%= link_to "𝕏", "https://twitter.com/share?url=#{CGI.escape(request.original_url)}&text=#{CGI.escape("#{t('defaults.share_text', title: @stress_relief.title)}")}%0A#{CGI.escape(t('defaults.hashtags'))}", target: "_blank", class: "text-2xl text-white bg-black px-1.5 py-1.0 rounded-none hover:bg-gray-700" %>
-          <span class="text-black"><%= t('defaults.share') %></span>
-        </div>
-        <div class="flex flex-col items-center">
-          <%= link_to t('stress_reliefs.show.try_this_method'), new_stress_record_path(stress_relief_id: @stress_relief.id), class: "rounded-lg py-1 px-5 bg-blue-800 hover:bg-blue-700 text-white inline-block font-medium" %>
-          <span class="text-blue-800"><%= t('stress_reliefs.show.try_this') %></span>
-        </div>
+      <div class="flex flex-col items-center">
+        <%= turbo_frame_tag "like_#{@stress_relief.id}" do %>
+          <%= render 'likes/like_link', stress_relief: @stress_relief %>
+        <% end %>
+        <span class="text-pink-500"><%= t('defaults.like') %></span>
+      </div>
+      <div class="flex flex-col items-center">
+        <%= link_to "𝕏", "https://twitter.com/share?url=#{CGI.escape(request.original_url)}&text=#{CGI.escape("#{t('defaults.share_text', title: @stress_relief.title)}")}%0A#{CGI.escape(t('defaults.hashtags'))}", target: "_blank", class: "text-2xl text-white bg-black px-1.5 py-1.0 rounded-none hover:bg-gray-700" %>
+        <span class="text-black"><%= t('defaults.share') %></span>
+      </div>
+      <div class="flex flex-col items-center">
+        <%= link_to t('stress_reliefs.show.try_this_method'), new_stress_record_path(stress_relief_id: @stress_relief.id), class: "rounded-lg py-1 px-5 bg-blue-800 hover:bg-blue-700 text-white inline-block font-medium" %>
+        <span class="text-blue-800"><%= t('stress_reliefs.show.try_this') %></span>
+      </div>
     </div>
   </div>
 </div>

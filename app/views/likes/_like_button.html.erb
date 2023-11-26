@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "like_#{stress_relief.id}" do %>
+  <div class="flex items-center text-pink-500">
+    <%= render 'like_link', stress_relief: stress_relief %>
+  </div>
+<% end %>

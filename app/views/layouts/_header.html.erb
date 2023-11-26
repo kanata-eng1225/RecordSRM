@@ -15,7 +15,7 @@
           <li class="sm:hidden"><%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to t('layouts.header.record'), stress_records_path %></li>
-            <li><%= link_to t('layouts.header.stress_nav'), "#" %></li>
+            <li><%= link_to t('layouts.header.recommended_selections'), stress_reliefs_path(recommend: true) %></li>
             <li><%= link_to t('defaults.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_message') } %></li>
           <% else %>
             <li><%= link_to t('defaults.login'), new_user_session_path %></li>

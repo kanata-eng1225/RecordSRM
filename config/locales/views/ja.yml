@@ -23,7 +23,7 @@ ja:
       record: "記録"
       likes_list: "いいね一覧(調整中)"
       mypage: "マイページ(調整中)"
-      stress_nav: "ストレス解消ナビ(調整中)"
+      recommended_selections: "オススメ3選"
     footer:
       terms_of_service: "利用規約"
       privacy_policy: "プライバシーポリシー"
@@ -86,6 +86,8 @@ ja:
     index:
       title: "ストレス解消法一覧"
       new_stress_relief: "新規作成"
+    recommend:
+      title: "あなたへオススメするストレス解消法3選"
     new:
       title: "オススメのストレス解消法は？"
       back_to_stress_reliefs: "キャンセル"
