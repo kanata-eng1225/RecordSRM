@@ -5,17 +5,20 @@
     </div>
     <div class="navbar-end flex-grow space-x-2 flex items-center justify-end flex-wrap">
       <div class="hidden sm:flex space-x-2">
-        <%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path, class: "btn btn-ghost normal-case text-sm sm:text-base lg:text-lg xl:text-xl" %>
+        <%= link_to t('layouts.header.featured_stress_relief'), stress_reliefs_path, class: "btn btn-ghost btn-sm normal-case text-xs sm:text-sm" %>
+        <% if user_signed_in? %>
+          <%= link_to t('layouts.header.recommended_selections', user_name: current_user.name), stress_reliefs_path(recommend: true), class: "btn btn-ghost btn-sm normal-case text-xs sm:text-sm" %>
+        <% end %>
       </div>
       <div class="dropdown ml-auto">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </label>
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 origin-top-right right-0">
-          <li class="sm:hidden"><%= link_to t('layouts.header.recommended_stress_relief'), stress_reliefs_path %></li>
+          <li class="sm:hidden"><%= link_to t('layouts.header.featured_stress_relief'), stress_reliefs_path %></li>
           <% if user_signed_in? %>
+            <li class="sm:hidden"><%= link_to t('layouts.header.recommended_selections', user_name: current_user.name), stress_reliefs_path(recommend: true) %></li>
             <li><%= link_to t('layouts.header.record'), stress_records_path %></li>
-            <li><%= link_to t('layouts.header.recommended_selections'), stress_reliefs_path(recommend: true) %></li>
             <li><%= link_to t('defaults.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('defaults.logout_message') } %></li>
           <% else %>
             <li><%= link_to t('defaults.login'), new_user_session_path %></li>

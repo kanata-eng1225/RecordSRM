@@ -1,6 +1,9 @@
-<div class="w-full max-w-screen-xl mx-auto p-5 bg-gray-100">
-  <h1 class="font-bold text-4xl mb-4"><%= t('stress_reliefs.recommend.title') %></h1>
+<div id="loading" class="flex justify-center items-center h-screen">
+  <span class="loading loading-ring loading-lg"></span>
+</div>
 
+<div id="recommend-content" class="w-full max-w-screen-xl mx-auto p-5 bg-gray-100 hidden">
+  <h1 class="font-bold text-4xl mb-4"><%= t('stress_reliefs.recommend.title', user_name: current_user.name) %></h1>
   <div id="stress_reliefs" class="flex flex-wrap justify-center md:justify-between">
     <%= render @stress_reliefs %>
   </div>
