@@ -129,4 +129,4 @@ ja:
       previous: "前"
       next: "次"
   search:
-    input_placeholder: "タイトル検索 (2文字以上補完)"
+    input_placeholder: "タイトル検索"
