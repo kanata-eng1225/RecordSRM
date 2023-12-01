@@ -74,28 +74,32 @@ class StressRelief < ApplicationRecord
 
   # おすすめのストレス解消法を取得する。
   def self.recommended_stress_reliefs(user)
-    # ユーザーがいいねした投稿を取得
+    # ユーザーがいいねした投稿のユーザーIDを取得し、重複を排除する。
     users_who_liked_my_posts = user.stress_reliefs.joins(:likes).pluck('likes.user_id').uniq
 
-    # それらの投稿からランダムに最大3件取得
+    # おすすめのストレス解消法を取得
     stress_reliefs_from_liked_users = if users_who_liked_my_posts.present?
                                         eager_load(:user, :tags, :likes)
-                                          .where(user_id: users_who_liked_my_posts).sample(MAX_RECOMMENDED_COUNT)
+                                          .where(user_id: users_who_liked_my_posts)
+                                          .where.not(user_id: user.id)
+                                          .to_a.sample(MAX_RECOMMENDED_COUNT)
                                       else
                                         []
                                       end
 
-    fill_top_stress_reliefs(stress_reliefs_from_liked_users)
+    fill_top_stress_reliefs(stress_reliefs_from_liked_users, user)
   end
 
   # おすすめのリストが足りない場合、いいねが多い投稿を追加
-  def self.fill_top_stress_reliefs(stress_reliefs)
+  def self.fill_top_stress_reliefs(stress_reliefs, user)
     if stress_reliefs.size < MAX_RECOMMENDED_COUNT
       top_stress_reliefs = left_joins(:likes)
                            .group(:id)
                            .order('COUNT(likes.id) DESC')
-                           .limit(TOP_STRESS_RELIEFS_LIMIT).sample(MAX_RECOMMENDED_COUNT - stress_reliefs.size)
-      stress_reliefs + where(id: top_stress_reliefs.map(&:id)).eager_load(:user, :tags, :likes)
+                           .limit(TOP_STRESS_RELIEFS_LIMIT).where.not(user_id: user.id)
+                           .pluck(:id).sample(MAX_RECOMMENDED_COUNT - stress_reliefs.size)
+      # 取得した投稿を既存のおすすめリストに追加
+      stress_reliefs + where(id: top_stress_reliefs).eager_load(:user, :tags, :likes)
     else
       stress_reliefs
     end
