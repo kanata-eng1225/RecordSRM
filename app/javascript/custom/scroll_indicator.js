@@ -23,4 +23,15 @@ document.addEventListener('turbo:load', function () {
       scrollIndicator.style.display = 'block';
     }
   });
+
+  // 矢印をクリックしたときのイベントを追加
+  const scrollIndicator = document.getElementById('scroll-indicator');
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', function() {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
