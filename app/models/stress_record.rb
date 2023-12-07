@@ -62,4 +62,28 @@ class StressRecord < ApplicationRecord
     index = weeks.find_index { |week| week[:start] <= today && week[:end] >= today }
     index ? index + 1 : 1
   end
+
+  # ユーザーと表示範囲、日付に基づいてデータを取得
+  def self.get_stress_data_for_user(user, range, start_date, end_date)
+    records = records_for_user_and_date_range(user, start_date, end_date).where(performed: true)
+    get_data_for_range(records, range, start_date)
+  end
+
+  # ユーザーと日付範囲に基づいてストレスレコードを取得
+  def self.records_for_user_and_date_range(user, start_date, end_date)
+    where(user:, stress_relief_date: start_date..end_date)
+  end
+
+  # 月または週の範囲を計算
+  def self.calculate_date_range(selected_year, selected_month, range, week_number, weeks)
+    if range == 'week' && week_number.present?
+      week_number = week_number.to_i
+      start_day = weeks[week_number - 1][:start].beginning_of_day
+      end_day = weeks[week_number - 1][:end].end_of_day
+    else
+      start_day = Date.new(selected_year, selected_month, 1).beginning_of_day
+      end_day = start_day.end_of_month.end_of_day
+    end
+    [start_day, end_day]
+  end
 end

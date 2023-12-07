@@ -6,12 +6,8 @@ class StressRecordsController < ApplicationController
   before_action :set_stress_reliefs, only: %i[new edit]
 
   def index
-    set_weekly_or_monthly_dates
-    # 選択した日付範囲に基づいて、ストレスレコードを取得
-    @stress_records = current_user.stress_records.for_date_range(@start_date, @end_date)
-    @sorted_stress_records = @stress_records.order(stress_relief_date: :asc)
-    # グラフ表示のためのデータを取得
-    @data = StressRecord.get_data_for_range(@stress_records.where(performed: true), @range, @start_date)
+    calculate_weeks_and_dates
+    fetch_stress_records
   end
 
   def show; end
@@ -85,36 +81,30 @@ class StressRecordsController < ApplicationController
     session[:range] = @range
   end
 
-  def set_weekly_or_monthly_dates
-    # 選択された年と月に基づき、その月の各週の開始日と終了日を計算
+  # 週と日付の範囲を計算
+  def calculate_weeks_and_dates
     @weeks = StressRecord.calculate_weeks_for_month(@selected_year, @selected_month)
-
-    # 表示範囲に応じて週別または月別の日付を設定
-    @range == 'week' ? set_weekly_dates : set_monthly_dates
+    @week_number = determine_week_number
+    @start_date, @end_date = StressRecord.calculate_date_range(@selected_year,
+                                                               @selected_month, @range, @week_number, @weeks)
   end
 
-  def set_weekly_dates
-    # ユーザーの入力から週番号を取得、存在しない場合は現在の日付が所属する週をデフォルト値として使用
-    determine_week_number
-    # 週番号が1未満または総週数を超える場合は、週番号を1に設定
-    @week_number = 1 if @week_number < 1 || @week_number > @weeks.length
-    # 選択した週の開始日と終了日を特定
-    @start_date = @weeks[@week_number - 1][:start].beginning_of_day
-    @end_date = @weeks[@week_number - 1][:end].end_of_day
-  end
-
-  def set_monthly_dates
-    # 選択した月の開始日と終了日を特定
-    @start_date = Date.new(@selected_year, @selected_month, 1).beginning_of_day
-    @end_date = @start_date.end_of_month.end_of_day
-  end
-
+  # 週番号の決定
   def determine_week_number
-    @week_number = if params[:week_number].present?
-                     params[:week_number].to_i
-                   else
-                     StressRecord.find_current_week_number(@weeks, Time.zone.today)
-                   end
+    if params[:week_number].present?
+      params[:week_number].to_i
+    else
+      StressRecord.find_current_week_number(@weeks, Time.zone.today)
+    end
+  end
+
+  # ストレスレコードの取得
+  def fetch_stress_records
+    # テーブル表示用のデータ取得
+    @stress_records = StressRecord.records_for_user_and_date_range(current_user, @start_date, @end_date)
+                                  .order(stress_relief_date: :asc)
+    # グラフ表示用のデータ取得
+    @data = StressRecord.get_stress_data_for_user(current_user, @range, @start_date, @end_date)
   end
 
   def set_stress_reliefs
