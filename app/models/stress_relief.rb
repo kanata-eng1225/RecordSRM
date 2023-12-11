@@ -6,6 +6,9 @@ class StressRelief < ApplicationRecord
   # 難易度の最大値
   MAX_DIFFICULTY = 3
 
+  # 画像設定する際の各難易度別の画像の枚数
+  NUMBER_OF_IMAGES = 4
+
   # あなたへおすすめのストレス解消法の表示件数
   MAX_RECOMMENDED_COUNT = 3
   # いいねが多いストレス解消法を取得する上限の件数

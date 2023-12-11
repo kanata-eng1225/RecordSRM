@@ -1,7 +1,8 @@
 <div class="board-item border p-5 rounded-xl bg-white m-2 w-80 self-start hover:scale-105 transform transition-transform duration-300" style="min-height: 400px;">
   <%= link_to stress_relief_path(stress_relief), class: "block " do %>
     <h2 class="font-bold text-2xl mb-4 break-all"><%= stress_relief.title %></h2>
-    <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.webp" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
+    <% image_file = stress_relief.selected_image.presence || "stress_relief_board#{stress_relief.difficulty}.webp" %>
+    <img src="<%= asset_path(image_file) %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
     
     <div class="flex justify-between items-center mb-2">
       <div class="text-xl flex flex-col items-center">

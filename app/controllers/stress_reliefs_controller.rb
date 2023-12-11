@@ -84,6 +84,6 @@ class StressReliefsController < ApplicationController
   end
 
   def stress_relief_params
-    params.require(:stress_relief).permit(:title, :detail, :difficulty, :tag_names)
+    params.require(:stress_relief).permit(:title, :detail, :difficulty, :tag_names, :selected_image)
   end
 end

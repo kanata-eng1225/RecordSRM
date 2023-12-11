@@ -1,0 +1,24 @@
+<div id="imageModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+  <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+    <p class="text-sm text-gray-700 mb-2"><%= t('modal.image_selection.instruction') %></p>
+    <select id="difficultySelect" class="select select-bordered w-full">
+      <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |difficulty| %>
+        <option value="<%= difficulty %>"><%= t('activerecord.attributes.stress_relief.difficulty') %> <%= difficulty %></option>
+      <% end %>
+    </select>
+
+    <div id="imageSelection" class="mt-4 grid grid-cols-2 gap-4"></div>
+
+    <%= button_tag t('modal.ok'), type: 'button', id: 'confirmSelectionButton', class: 'mt-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded' %>
+    <button id="closeModal" class="mt-3 bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded"><%= t('modal.cancel') %></button>
+
+    <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |difficulty| %>
+      <div id="imagePathsForDifficulty<%= difficulty %>" class="hidden">
+        <% (1..StressRelief::NUMBER_OF_IMAGES).each do |image_number| %>
+          <span data-path="<%= asset_path("stress_relief_board#{difficulty}_#{image_number}.webp") %>"></span>
+        <% end %>
+        <span id="defaultImagePath<%= difficulty %>" data-path="<%= asset_path("stress_relief_board#{difficulty}.webp") %>"></span>
+      </div>
+    <% end %>
+  </div>
+</div>
