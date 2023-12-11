@@ -1,20 +1,21 @@
-document.addEventListener("turbo:load", function() {
-  document.querySelectorAll('.star-label').forEach((label, index, labelArray) => {
-    label.addEventListener('click', (e) => {
-      const radioButton = document.getElementById(`rating_${index + 1}`);
-      radioButton.checked = true;
+function setupStarRating() {
+  const starLabels = document.querySelectorAll('.star-label');
 
-      labelArray.forEach((starLabel, starIndex) => {
-        if (starIndex <= index) {
-          starLabel.textContent = "★";
-          starLabel.classList.remove('text-gray-400');
-          starLabel.classList.add('text-yellow-500');
-        } else {
-          starLabel.textContent = "★";
-          starLabel.classList.remove('text-yellow-500');
-          starLabel.classList.add('text-gray-400');
-        }
-      });
+  starLabels.forEach((label, index) => {
+    const radioButton = document.getElementById(`rating_${index + 1}`);
+    if (radioButton && radioButton.checked) {
+      label.classList.add('text-yellow-500');
+      label.classList.remove('text-gray-400');
+    } else {
+      label.classList.add('text-gray-400');
+      label.classList.remove('text-yellow-500');
+    }
+
+    label.addEventListener('click', (e) => {
+      e.preventDefault();
     });
   });
-});
+}
+
+document.addEventListener("turbo:load", setupStarRating);
+document.addEventListener("turbo:render", setupStarRating);

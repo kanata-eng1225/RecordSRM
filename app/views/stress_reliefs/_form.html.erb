@@ -23,15 +23,29 @@
     <%= form.text_area :detail, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :difficulty, class: "inline-block" %>
-    <span class="text-red-500">*</span>
-    <div class="flex">
-      <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |rating| %>
-        <%= form.radio_button :difficulty, rating, checked: rating == stress_relief.difficulty, class: "hidden star-rating", id: "rating_#{rating}" %>
-        <%= form.label "rating_#{rating}", "★", class: (rating <= (stress_relief.difficulty || StressRelief::DEFAULT_DIFFICULTY) ? "text-yellow-500" : "text-gray-400") + " hover:text-yellow-500 cursor-pointer star-label" %>
-      <% end %>
+  <div class="my-5 flex">
+    <div class="mr-5">
+      <%= form.label :difficulty, class: "block text-lg font-medium mb-2 inline-block" %>
+      <span class="text-red-500">*</span>
+      <div class="flex">
+        <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |rating| %>
+          <%= form.radio_button :difficulty, rating, checked: rating == stress_relief.difficulty, class: "hidden star-rating", id: "rating_#{rating}" %>
+          <%= label_tag "rating_#{rating}", "★", class: "star-label text-xl" %>
+        <% end %>
+      </div>
     </div>
+    <div class="flex-grow">
+      <%= button_tag t('stress_reliefs.form.set_difficulty_and_image'), type: 'button', id: 'openModalButton', class: 'py-2 px-4 bg-blue-800 hover:bg-blue-700 text-white rounded-lg ml-3' %>
+    </div>
+  </div>
+
+  <%= form.hidden_field :temporary_selected_image, id: 'temporarySelectedImage' %>
+  <%= form.hidden_field :difficulty, id: 'selectedDifficulty', value: stress_relief.difficulty %>
+
+  <div class="my-5">
+    <% image_file = stress_relief.selected_image.presence || "stress_relief_board#{stress_relief.difficulty}.webp" %>
+    <%= image_tag(asset_path(image_file), id: 'previewImage', class: 'w-64 h-auto object-cover mb-4') %>
+    <%= form.hidden_field :selected_image, id: 'selectedImage' %>
   </div>
 
   <div class="my-5">
@@ -43,3 +57,5 @@
     <%= form.submit stress_relief.new_record? ? t('stress_reliefs.form.submit') : t('defaults.update'), class: "rounded-lg py-3 px-5 bg-blue-800 hover:bg-blue-700 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+
+<%= render 'image_modal' %>

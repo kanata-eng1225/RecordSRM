@@ -80,6 +80,7 @@ ja:
       submit: "投稿"
       placeholders:
         tag_names: "30文字以内で、複数はカンマ(,)区切り"
+      set_difficulty_and_image: "調整中"
     edit:
       title: "ストレス解消法の編集"
       show_stress_relief: "キャンセル"
@@ -103,7 +104,10 @@ ja:
       success: "ストレス解消法が正常に削除されました。"
     unauthorized: "権限がありません。"
   modal:
-    close: "閉じる"
+    ok: "OK"
+    cancel: "キャンセル"
+    image_selection:
+      instruction: "難易度を選択して、画像を選択してください。画像を選択しない場合は、デフォルトの画像が設定されます。"
   home:
     index:
       featured_stress_relief: "オススメのストレス解消法の共有と"

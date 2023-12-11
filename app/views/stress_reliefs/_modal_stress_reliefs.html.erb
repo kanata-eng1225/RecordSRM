@@ -3,7 +3,8 @@
     <% @stress_reliefs.each do |stress_relief| %>
       <div data-action="click->modal#select" class="board-item block border p-5 rounded-xl hover:scale-105 transform transition-transform duration-300 bg-white m-2 w-72 self-start" style="min-height: 400px;" data-title="<%= stress_relief.title %>" data-detail="<%= stress_relief.detail %>">
         <h2 class="font-bold text-2xl mb-4 break-all"><%= stress_relief.title %></h2>
-        <img src="<%= asset_path "stress_relief_board#{stress_relief.difficulty}.webp" %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
+        <% image_file = stress_relief.selected_image.presence || "stress_relief_board#{stress_relief.difficulty}.webp" %>
+        <img src="<%= asset_path(image_file) %>" alt="Stress Relief Image" class="w-full h-48 object-cover mb-4">
         
         <div class="flex justify-between items-center mb-2">
           <div class="text-xl flex flex-col items-center">
