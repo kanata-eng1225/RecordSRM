@@ -30,7 +30,7 @@
       <div class="flex">
         <% (StressRelief::MIN_DIFFICULTY..StressRelief::MAX_DIFFICULTY).each do |rating| %>
           <%= form.radio_button :difficulty, rating, checked: rating == stress_relief.difficulty, class: "hidden star-rating", id: "rating_#{rating}" %>
-          <%= label_tag "rating_#{rating}", "★", class: "star-label text-xl" %>
+          <%= label_tag "rating_#{rating}", "★", class: "star-label text-xl cursor-pointer hover:text-yellow-500", data: { default_image_path: asset_path("stress_relief_board#{rating}.webp") } %>
         <% end %>
       </div>
     </div>

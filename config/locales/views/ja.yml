@@ -80,7 +80,7 @@ ja:
       submit: "投稿"
       placeholders:
         tag_names: "30文字以内で、複数はカンマ(,)区切り"
-      set_difficulty_and_image: "調整中"
+      set_difficulty_and_image: "画像を選択"
     edit:
       title: "ストレス解消法の編集"
       show_stress_relief: "キャンセル"
