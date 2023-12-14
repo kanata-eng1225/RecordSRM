@@ -9,21 +9,25 @@ function setupModalEvents() {
   const previewImage = document.getElementById('previewImage');
   const openModalButton = document.getElementById('openModalButton');
 
+  // モーダルを開くボタンのイベントリスナーを設定
   if (openModalButton && imageModal && selectedDifficultyInput && difficultySelect) {
     openModalButton.addEventListener('click', function() {
-      imageModal.style.display = 'block';
-      updateImageSelection(selectedDifficultyInput.value);
-      difficultySelect.value = selectedDifficultyInput.value;
+      imageModal.style.display = 'block'; // モーダルを表示
+      const selectedDifficulty = document.getElementById('selectedDifficulty').value; // 隠しフィールドから難易度を取得
+      updateImageSelection(selectedDifficulty); // 画像選択を更新
+      difficultySelect.value = selectedDifficulty; // モーダルの難易度選択を更新
     });
   }
 
+  // 難易度選択のイベントリスナーを設定
   if (difficultySelect && imageSelection && temporarySelectedImage) {
     difficultySelect.addEventListener('change', function() {
-      temporarySelectedImage.value = '';
-      updateImageSelection(this.value);
+      temporarySelectedImage.value = ''; // 一時選択された画像をクリア
+      updateImageSelection(this.value); // 画像選択を更新
     });
   }
 
+  // OKボタンのイベントリスナーを設定
   if (confirmSelectionButton && previewImage && selectedDifficultyInput && difficultySelect) {
     confirmSelectionButton.addEventListener('click', function() {
       if (temporarySelectedImage.value) {
@@ -45,12 +49,9 @@ function setupModalEvents() {
       imageModal.style.display = 'none';
     });
   }
-
-  if (selectedDifficultyInput) {
-    updateStarRating(selectedDifficultyInput.value);
-  }
 }
 
+// 難易度に応じた画像選択を更新する
 function updateImageSelection(difficulty) {
   const imagePathsContainer = document.getElementById(`imagePathsForDifficulty${difficulty}`);
   const imagePaths = imagePathsContainer ? imagePathsContainer.querySelectorAll('span') : [];
@@ -72,6 +73,7 @@ function updateImageSelection(difficulty) {
   });
 }
 
+// 星の評価を更新する
 function updateStarRating(difficulty) {
   const starLabels = document.querySelectorAll('.star-label');
 
