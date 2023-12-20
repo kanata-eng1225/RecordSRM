@@ -20,7 +20,11 @@
 
         <div class="flex justify-between items-center mt-4">
           <div class="flex items-center text-pink-500">
-            <%= render 'likes/like_icon_outline' %>
+            <% if user_signed_in? && current_user.likes.exists?(stress_relief_id: stress_relief.id) %>
+              <%= render 'likes/like_icon_filled' %>
+            <% else %>
+              <%= render 'likes/like_icon_outline' %>
+            <% end %>
             <span class="ml-2"><%= stress_relief.likes.count %></span>
           </div>
           <p class="text-xl"><%= stress_relief.user.name %></p>
