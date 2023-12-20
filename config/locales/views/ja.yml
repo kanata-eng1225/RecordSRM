@@ -54,6 +54,8 @@ ja:
       before: "実施前"
       after: "実施後"
       nth_week: "第%{week_number}週"
+      graph_description: "グラフの説明"
+      graph_detail: "数値がマイナスであれば、ストレスレベルが減少しており、ストレスを効果的に解消できています。一方、数値がプラスであれば、ストレスレベルが増加しており、より高いストレスを感じています。"
     show:
       title: "記録詳細"
       share_as_recommendation: "オススメの解消法として共有"
@@ -108,6 +110,7 @@ ja:
     cancel: "キャンセル"
     image_selection:
       instruction: "難易度を選択して、画像を選択してください。画像を選択しない場合は、デフォルトの画像が設定されます。"
+    select_stress_relief: "ストレス解消法を選択してください。"
   home:
     index:
       featured_stress_relief: "オススメのストレス解消法の共有と"

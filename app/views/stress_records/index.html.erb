@@ -3,37 +3,55 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center mb-12">
-    <h1 class="font-bold text-4xl mt-4"><%= t('stress_records.index.title') %></h1>
-    <%= link_to t('stress_records.index.new_stress_record'), new_stress_record_path, class: "rounded-lg py-3 px-5 mt-4 bg-blue-800 hover:bg-blue-700 text-white block font-medium" %>
+  <div class="mb-12 max-w-5xl mx-auto">
+    <div class="flex justify-between items-center mb-5">
+      <h1 class="font-bold text-4xl mt-4"><%= t('stress_records.index.title') %></h1>
+      <%= link_to t('stress_records.index.new_stress_record'), new_stress_record_path, class: "rounded-lg py-3 px-5 mt-4 bg-blue-800 hover:bg-blue-700 text-white font-medium" %>
+    </div>
+
+    <%= form_with url: stress_records_path, method: :get do |f| %>
+      <div class="flex items-center space-x-2 mb-5">
+        <%= f.select :year, options_for_select((StressRecord::START_YEAR..Time.zone.now.year).to_a.reverse, selected: params[:year] || Time.zone.now.year), {}, class: "form-select" %>
+        <%= f.select :month, options_for_select((StressRecord::MONTH_RANGE).to_a, selected: params[:month] || Time.zone.now.month), {}, class: "form-select" %>
+      
+        <% if @range == "week" %>
+          <%= f.select :week_number, options_for_select((StressRecord::FIRST_WEEK_NUMBER..@weeks.length).map { |i| [t('stress_records.index.nth_week', week_number: i), i] }, selected: params[:week_number] || @week_number), {}, class: "form-select" %>
+        <% end %>
+        
+        <%= f.submit t('defaults.search_button'), class: "rounded-lg py-3 px-5 bg-indigo-700 hover:bg-indigo-600 text-white font-medium" %>
+      </div>
+    <% end %>
   </div>
 
-  <%= form_with url: stress_records_path, method: :get do |f| %>
-    <%= f.select :year, options_for_select((StressRecord::START_YEAR..Time.zone.now.year).to_a.reverse, selected: params[:year] || Time.zone.now.year), {}, class: "form-select inline-block" %>
-    <%= f.select :month, options_for_select((StressRecord::MONTH_RANGE).to_a, selected: params[:month] || Time.zone.now.month), {}, class: "form-select inline-block" %>
-    
-    <% if @range == "week" %>
-      <%= f.select :week_number, options_for_select((StressRecord::FIRST_WEEK_NUMBER..@weeks.length).map { |i| [t('stress_records.index.nth_week', week_number: i), i] }, selected: params[:week_number] || @week_number), {}, class: "form-select inline-block" %>
-    <% end %>
-    
-    <%= f.submit t('defaults.search_button'), class: "inline-block rounded-lg py-3 px-5 mt-4 bg-indigo-700 hover:bg-indigo-600 text-white font-medium" %>
-  <% end %>
-
-  <div class="my-5 max-w-5xl mx-auto relative bg-white p-4 rounded-lg">
+  <div class="my-5 max-w-5xl mx-auto bg-white p-4 rounded-lg relative">
     <select class="select select-bordered bg-white w-auto max-w-sm absolute top-4 left-4 z-10" data-controller="records-chart" data-action="change->records-chart#changeRange">
       <option value="week" <%= @range == "week" ? 'selected' : '' %>><%= t('stress_records.index.weekly') %></option>
       <option value="month" <%= @range == "month" ? 'selected' : '' %>><%= t('stress_records.index.monthly') %></option>
     </select>
-    <div class="pt-16 pb-4">
-      <h2 class="font-bold text-2xl mb-4 text-center"><%= t('stress_records.index.stress_level_fluctuation') %></h2>
+    <div class="flex flex-col justify-between items-center pt-16 pb-4">
+      <div class="flex items-center mb-4">
+        <h2 class="font-bold text-2xl mr-2"><%= t('stress_records.index.stress_level_fluctuation') %></h2>
+        
+        <div class="dropdown dropdown-left">
+          <label tabindex="0" class="btn btn-circle btn-ghost btn-xs text-blue-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </label>
+          <div tabindex="0" class="dropdown-content card compact z-[1] shadow bg-base-100 rounded-box w-64">
+            <div class="card-body">
+              <h2 class="card-title"><%= t('stress_records.index.graph_description') %></h2>
+              <p class="text-left"><%= t('stress_records.index.graph_detail') %></p>
+            </div>
+          </div>
+        </div>
+      </div>
       <% if @range == "week" && @week_number.present? %>
-        <p class="text-center mb-4"><%= t('stress_records.index.nth_week', week_number: @week_number) %>: <%= @weeks[@week_number - 1][:start].strftime('%Y-%m-%d') %> 〜 <%= @weeks[@week_number - 1][:end].strftime('%Y-%m-%d') %></p>
+        <p class="text-center"><%= t('stress_records.index.nth_week', week_number: @week_number) %>: <%= @weeks[@week_number - 1][:start].strftime('%Y-%m-%d') %> 〜 <%= @weeks[@week_number - 1][:end].strftime('%Y-%m-%d') %></p>
       <% end %>
     </div>
     <%= line_chart @data, height: "400px" %>
   </div>
 
-  <div id="stress-records-table">
+  <div id="stress-records-table" class="max-w-5xl mx-auto">
     <%= render 'stress_records/stress_records_table', stress_records: @stress_records %>
   </div>
 </div>
