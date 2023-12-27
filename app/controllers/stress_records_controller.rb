@@ -92,7 +92,9 @@ class StressRecordsController < ApplicationController
   # 週番号の決定
   def determine_week_number
     if params[:week_number].present?
-      params[:week_number].to_i
+      week_number = params[:week_number].to_i
+      # 週番号がその月の週の数を超えている場合、最初の週をリセット
+      week_number <= @weeks.length ? week_number : StressRecord::FIRST_WEEK_NUMBER
     else
       StressRecord.find_current_week_number(@weeks, Time.zone.today)
     end
