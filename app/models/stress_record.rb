@@ -38,7 +38,7 @@ class StressRecord < ApplicationRecord
     # 指定の範囲内で、日ごとのストレスレベルの変動を計算
     records.where(stress_relief_date: range_start_date..latest_date)
            .group_by_day(:stress_relief_date, series: false)
-           .sum('after_stress_level - before_stress_level')
+           .average('after_stress_level - before_stress_level')
   end
 
   # 指定の年月の各週の開始日と終了日を計算
