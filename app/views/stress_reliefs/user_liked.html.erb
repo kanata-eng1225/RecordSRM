@@ -1,0 +1,25 @@
+<div class="w-full max-w-screen-xl mx-auto p-5 bg-gray-100">
+  <div class="mb-4">
+    <h1 class="font-bold text-4xl inline-block"><%= t('layouts.header.likes_list') %></h1>
+    <div class="clear-both"></div>
+  </div>
+
+  <% if @stress_reliefs.exists? %>
+    <div id="liked_stress_reliefs" class="flex flex-wrap justify-center md:justify-between">
+      <%= render @stress_reliefs %>
+    </div>
+
+    <div class="w-full text-center my-8">
+      <%= paginate @stress_reliefs %>
+    </div>
+  <% else %>
+    <div class="flex flex-col items-center justify-center" style="height: 60vh;">
+      <%= image_tag 'user_liked.png', alt: 'No_likes', class: 'max-w-xs' %>
+      <div class="text-center mt-5">
+        <p class="text-lg"><%= t('stress_reliefs.user_liked.no_likes') %></p>
+        <p class="text-lg mt-2"><%= t('stress_reliefs.user_liked.find_favorites') %></p>
+        <%= link_to t('home.index.view_stress_reliefs'), stress_reliefs_path, class: "mt-5 inline-block bg-blue-800 text-white py-2 px-4 rounded hover:bg-blue-700" %>
+      </div>
+    </div>
+  <% end %>
+</div>

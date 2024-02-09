@@ -4,14 +4,7 @@ class StressReliefsController < ApplicationController
   before_action :ensure_correct_user, only: %i[edit update destroy]
 
   def index
-    @stress_reliefs = if params[:query].present?
-                        search_stress_reliefs
-                      elsif recommend_param?
-                        @stress_reliefs = StressRelief.recommended_stress_reliefs(current_user)
-                        render 'recommend' and return
-                      else
-                        default_stress_reliefs
-                      end
+    @stress_reliefs = select_stress_reliefs
   end
 
   def show; end
@@ -54,6 +47,18 @@ class StressReliefsController < ApplicationController
 
   private
 
+  def select_stress_reliefs
+    if params[:query].present?
+      search_stress_reliefs
+    elsif user_liked_stress_relief?
+      liked_stress_reliefs
+    elsif recommend_param?
+      recommended_stress_reliefs
+    else
+      default_stress_reliefs
+    end
+  end
+
   def set_stress_relief
     preload_associations = [:tags]
     @stress_relief = if action_name == 'edit'
@@ -70,8 +75,30 @@ class StressReliefsController < ApplicationController
                 .order(created_at: :desc).page(params[:page])
   end
 
+  def user_liked_stress_relief?
+    params[:liked] == 'true' && user_signed_in?
+  end
+
+  def liked_stress_reliefs
+    stress_reliefs_with_pagination = StressRelief.joins(:likes).where(likes: { user_id: current_user.id })
+                                                 .preload(:tags, :user).page(params[:page])
+
+    # ページが存在しない場合は、最初のページにリダイレクト
+    if stress_reliefs_with_pagination.empty? && params[:page].present?
+      redirect_to stress_reliefs_path(liked: true) and return
+    end
+
+    @stress_reliefs = stress_reliefs_with_pagination
+    render 'user_liked'
+  end
+
   def recommend_param?
     params[:recommend] == 'true' && user_signed_in?
+  end
+
+  def recommended_stress_reliefs
+    @stress_reliefs = StressRelief.recommended_stress_reliefs(current_user)
+    render 'recommend' and return
   end
 
   def default_stress_reliefs

@@ -21,7 +21,7 @@ ja:
       featured_stress_relief: "ストレス解消法"
       ranking: "ランキング(調整中)"
       record: "記録"
-      likes_list: "いいね一覧(調整中)"
+      likes_list: "いいね一覧"
       mypage: "マイページ(調整中)"
       recommended_selections: "%{user_name}にオススメ3選"
     footer:
@@ -89,6 +89,9 @@ ja:
     index:
       title: "ストレス解消法一覧"
       new_stress_relief: "新規作成"
+    user_liked:
+      no_likes: "いいねしたストレス解消法がありません。"
+      find_favorites: "お気に入りのストレス解消法を見つけませんか？"
     recommend:
       title: "%{user_name}にオススメするストレス解消法3選"
     new:
